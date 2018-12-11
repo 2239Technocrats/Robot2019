@@ -32,7 +32,12 @@ public class OI {
     testButton2.whenReleased(new StopLiftMotor());
     testButton3.whenPressed(new MoveLiftMotor(1.0));
     testButton3.whenReleased(new StopLiftMotor());
+<<<<<<< HEAD
     testButton5.whenPressed(new InvertGrabber());
+=======
+    testButton4.whenPressed(new TestDriveChain(0.5));
+    testButton4.whenReleased(new TestDriveChain(0));
+>>>>>>> d8a543442ab266a675cf532d4e4a1ea0697ffdf1
   }
 
   //// CREATING BUTTONS
