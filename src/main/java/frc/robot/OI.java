@@ -7,10 +7,7 @@
 
 package frc.robot;
 
-import frc.robot.commands.ExampleCommand;
-import frc.robot.commands.StopLiftMotor;
-import frc.robot.commands.MoveLiftMotor;
-import frc.robot.commands.InvertGrabber;
+import frc.robot.commands.*;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
@@ -25,6 +22,7 @@ public class OI {
   JoystickButton testButton1 = new JoystickButton(testJoystick, 1);
   JoystickButton testButton2 = new JoystickButton(testJoystick, 2);
   JoystickButton testButton3 = new JoystickButton(testJoystick, 3);
+  JoystickButton testButton4 = new JoystickButton(testJoystick, 4);
   JoystickButton testButton5 = new JoystickButton(testJoystick, 5);
   public OI () {
     testButton1.whenPressed(new ExampleCommand());
@@ -32,12 +30,9 @@ public class OI {
     testButton2.whenReleased(new StopLiftMotor());
     testButton3.whenPressed(new MoveLiftMotor(1.0));
     testButton3.whenReleased(new StopLiftMotor());
-<<<<<<< HEAD
     testButton5.whenPressed(new InvertGrabber());
-=======
     testButton4.whenPressed(new TestDriveChain(0.5));
     testButton4.whenReleased(new TestDriveChain(0));
->>>>>>> d8a543442ab266a675cf532d4e4a1ea0697ffdf1
   }
 
   //// CREATING BUTTONS
