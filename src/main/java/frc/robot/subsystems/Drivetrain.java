@@ -30,6 +30,20 @@ public class Drivetrain extends Subsystem {
       lift.set(amount);
   }
 
+  public void driveForwardLeft(double amount) {
+      leftLeaderMotor.set(amount);
+      leftFollowerMotor1.set(amount);
+      leftFollowerMotor2.set(amount);
+  }
+
+  public void driveForwardRight(double amount) {
+    rightLeaderMotor.set(amount);
+    rightFollowerMotor1.set(amount);
+    rightFollowerMotor2.set(amount);
+}
+
+
+
   // Drivetrain public objects
   public Drivetrain () {
     leftFollowerMotor2 = new WPI_TalonSRX(1);
