@@ -8,6 +8,9 @@
 package frc.robot;
 
 import frc.robot.commands.ExampleCommand;
+import frc.robot.commands.TestLiftMotor;
+import frc.robot.commands.StopLiftMotor;
+import frc.robot.commands.MoveLiftMotor;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
@@ -20,8 +23,14 @@ public class OI {
   XboxController testXbox = new XboxController(0);
   Joystick testJoystick = new Joystick(1);
   JoystickButton testButton1 = new JoystickButton(testJoystick, 1);
+  JoystickButton testButton2 = new JoystickButton(testJoystick, 2);
+  JoystickButton testButton3 = new JoystickButton(testJoystick, 3);
   public OI () {
     testButton1.whenPressed(new ExampleCommand());
+    testButton2.whenPressed(new MoveLiftMotor(-1.0));
+    testButton2.whenReleased(new StopLiftMotor());
+    testButton3.whenPressed(new MoveLiftMotor(1.0));
+    testButton3.whenReleased(new StopLiftMotor());
   }
 
   //// CREATING BUTTONS
