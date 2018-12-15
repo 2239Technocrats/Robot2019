@@ -31,11 +31,7 @@ public class OI {
     testButton3.whenPressed(new MoveLiftMotor(1.0));
     testButton3.whenReleased(new StopLiftMotor());
     testButton5.whenPressed(new InvertGrabber());
-<<<<<<< HEAD
-    testButton4.whenPressed(new TestDriveChain(0.5));
-=======
     testButton4.whenPressed(new TestDriveChain(0.1));
->>>>>>> cdb6b8e7a95985f69d2177b96b31577ccc778bb2
     testButton4.whenReleased(new TestDriveChain(0));
   }
 
