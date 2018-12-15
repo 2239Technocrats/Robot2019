@@ -9,12 +9,8 @@ package frc.robot.subsystems;
 
 // Subsystem system
 import edu.wpi.first.wpilibj.command.Subsystem;
-// Robot's compreser
-import edu.wpi.first.wpilibj.Compressor;
 // Motor controller
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
-// Solenoids
-import edu.wpi.first.wpilibj.Solenoid;
 
 /**
  * An example subsystem.  You can replace me with your own Subsystem.
@@ -31,24 +27,9 @@ public class Drivetrain extends Subsystem {
   WPI_TalonSRX grabberWheelsRight;
   WPI_TalonSRX grabberWheelsLeft;
   WPI_TalonSRX lift;
-  Compressor compressor;
-  Solenoid grabber;
   // moves the lift motor
   public void moveLiftMotor(double amount) {
       lift.set(amount);
-  }
-  // initalizes compressor
-  public void initalizeCompressor() {
-    compressor.start();
-    compressor.setClosedLoopControl(true);
-  }
-  // move grabber
-  public void setGrabber(boolean state) {
-      grabber.set(state);
-  }
-  // get grabber state
-  public boolean getGrabber() {
-      return grabber.get();
   }
 
   public void driveForwardLeft(double amount) {
@@ -63,8 +44,6 @@ public class Drivetrain extends Subsystem {
     rightFollowerMotor2.set(amount);
 }
 
-
-
   // Drivetrain public objects
   public Drivetrain () {
     leftFollowerMotor2 = new WPI_TalonSRX(1);
@@ -76,8 +55,6 @@ public class Drivetrain extends Subsystem {
 	grabberWheelsRight = new WPI_TalonSRX(9);
 	grabberWheelsLeft = new WPI_TalonSRX(7);
     lift = new WPI_TalonSRX(10);
-    compressor = new Compressor();
-    grabber = new Solenoid(14, 2);
   }
 
   @Override

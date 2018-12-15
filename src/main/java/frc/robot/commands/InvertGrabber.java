@@ -16,7 +16,7 @@ import frc.robot.Robot;
 public class InvertGrabber extends Command {
   public InvertGrabber() {
     // Use requires() here to declare subsystem dependencies
-    requires(Robot.drivetrain);
+    requires(Robot.pneumatics);
   }
   // Called just before this Command runs the first time
   @Override
@@ -28,7 +28,7 @@ public class InvertGrabber extends Command {
   @Override
   protected void execute() {
     System.out.println("execute(); on InvertGrabber");
-    Robot.drivetrain.setGrabber(Robot.drivetrain.getGrabber() == false);
+    Robot.pneumatics.setGrabber(Robot.pneumatics.getGrabber() == false);
   }
 
   // Make this return true when this Command no longer needs to run execute()
