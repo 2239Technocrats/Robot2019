@@ -7,10 +7,12 @@
 
 package frc.robot.subsystems;
 
+import edu.wpi.first.wpilibj.SpeedControllerGroup;
 // Subsystem system
 import edu.wpi.first.wpilibj.command.Subsystem;
 // Motor controller
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 
 /**
  * An example subsystem.  You can replace me with your own Subsystem.
@@ -27,6 +29,9 @@ public class Drivetrain extends Subsystem {
   WPI_TalonSRX grabberWheelsRight;
   WPI_TalonSRX grabberWheelsLeft;
   WPI_TalonSRX lift;
+  DifferentialDrive drive;
+  SpeedControllerGroup left;
+  SpeedControllerGroup right;
   // moves the lift motor
   public void moveLiftMotor(double amount) {
       lift.set(amount);
@@ -41,7 +46,6 @@ public class Drivetrain extends Subsystem {
   public void driveForwardRight(double amount) {
     rightLeaderMotor.set(amount);
     rightFollowerMotor1.set(amount);
-    rightFollowerMotor2.set(amount);
 }
 
   // Drivetrain public objects
@@ -55,6 +59,13 @@ public class Drivetrain extends Subsystem {
 	grabberWheelsRight = new WPI_TalonSRX(9);
 	grabberWheelsLeft = new WPI_TalonSRX(7);
     lift = new WPI_TalonSRX(10);
+    left = new SpeedControllerGroup(leftLeaderMotor, leftFollowerMotor1, leftFollowerMotor2);
+    right = new SpeedControllerGroup(rightLeaderMotor, rightFollowerMotor1, rightFollowerMotor2);
+    drive = new DifferentialDrive(left, right);
+  }
+
+  public DifferentialDrive getDrive() {
+      return drive;
   }
 
   @Override
@@ -62,4 +73,5 @@ public class Drivetrain extends Subsystem {
     // Set the default command for a subsystem here.
     // setDefaultCommand(new MySpecialCommand());
   }
+
 }

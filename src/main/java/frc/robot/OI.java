@@ -10,7 +10,10 @@ package frc.robot;
 import frc.robot.commands.*;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
+import edu.wpi.first.wpilibj.GenericHID.Hand;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
+import edu.wpi.first.wpilibj.drive.DifferentialDrive;
+import frc.robot.subsystems.Drivetrain;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -24,7 +27,8 @@ public class OI {
   JoystickButton testButton3 = new JoystickButton(testJoystick, 3);
   JoystickButton testButton4 = new JoystickButton(testJoystick, 4);
   JoystickButton testButton5 = new JoystickButton(testJoystick, 5);
-  public OI () {
+  DifferentialDrive drive;
+  public OI (Drivetrain drivetrain) {
     testButton1.whenPressed(new ExampleCommand());
     testButton2.whenPressed(new MoveLiftMotor(-1.0));
     testButton2.whenReleased(new StopLiftMotor());
@@ -33,6 +37,8 @@ public class OI {
     testButton5.whenPressed(new InvertGrabber());
     testButton4.whenPressed(new TestDriveChain(0.1));
     testButton4.whenReleased(new TestDriveChain(0));
+    drive = drivetrain.getDrive();
+    drive.tankDrive(testXbox.getY(Hand.kLeft), testXbox.getY(Hand.kRight), true);
   }
 
   //// CREATING BUTTONS
