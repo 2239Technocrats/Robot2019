@@ -12,9 +12,10 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import frc.robot.commands.ExampleCommand;
+// import frc.robot.commands.ExampleCommand;
 import frc.robot.subsystems.Drivetrain;
 import frc.robot.subsystems.Pneumatics;
+import frc.robot.commands.TankDrive;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -37,11 +38,11 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void robotInit() {
-    oi = new OI();
-    m_chooser.addDefault("Default Auto", new ExampleCommand());
-    // chooser.addObject("My Auto", new MyAutoCommand());
-    SmartDashboard.putData("Auto mode", m_chooser);
-    pneumatics.initalizeCompressor();
+    // oi = new OI(drivetrain);
+    // m_chooser.addDefault("Default Auto", new ExampleCommand());
+    // // chooser.addObject("My Auto", new MyAutoCommand());
+    // SmartDashboard.putData("Auto mode", m_chooser);
+    // pneumatics.initalizeCompressor();
   }
 
   /**
@@ -63,6 +64,7 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void disabledInit() {
+
   }
 
   @Override
@@ -112,6 +114,7 @@ public class Robot extends TimedRobot {
     // teleop starts running. If you want the autonomous to
     // continue until interrupted by another command, remove
     // this line or comment it out.
+    new TankDrive();
     if (m_autonomousCommand != null) {
       m_autonomousCommand.cancel();
     }

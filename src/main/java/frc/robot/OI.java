@@ -29,7 +29,6 @@ public class OI {
   JoystickButton testButton5 = new JoystickButton(testJoystick, 5);
   DifferentialDrive drive;
   public OI (Drivetrain drivetrain) {
-    testButton1.whenPressed(new ExampleCommand());
     testButton2.whenPressed(new MoveLiftMotor(-1.0));
     testButton2.whenReleased(new StopLiftMotor());
     testButton3.whenPressed(new MoveLiftMotor(1.0));
@@ -38,7 +37,11 @@ public class OI {
     testButton4.whenPressed(new TestDriveChain(0.1));
     testButton4.whenReleased(new TestDriveChain(0));
     drive = drivetrain.getDrive();
-    drive.tankDrive(testXbox.getY(Hand.kLeft), testXbox.getY(Hand.kRight), true);
+    new TankDrive();
+  }
+
+  public XboxController getXboxController(){
+    return testXbox;
   }
 
   //// CREATING BUTTONS
