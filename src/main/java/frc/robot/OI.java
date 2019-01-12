@@ -37,7 +37,6 @@ public class OI {
     testButton4.whenPressed(new TestDriveChain(0.1));
     testButton4.whenReleased(new TestDriveChain(0));
     drive = drivetrain.getDrive();
-    new TankDrive();
   }
 
   public XboxController getXboxController(){

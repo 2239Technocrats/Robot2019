@@ -61,6 +61,8 @@ public class Drivetrain extends Subsystem {
     lift = new WPI_TalonSRX(10);
     left = new SpeedControllerGroup(leftLeaderMotor, leftFollowerMotor1, leftFollowerMotor2);
     right = new SpeedControllerGroup(rightLeaderMotor, rightFollowerMotor1, rightFollowerMotor2);
+    left.setSafetyEnabled(false);
+    right.setSafetyEnabled(false);
     drive = new DifferentialDrive(left, right);
   }
 
