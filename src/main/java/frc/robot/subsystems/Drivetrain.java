@@ -7,12 +7,12 @@
 
 package frc.robot.subsystems;
 
-import edu.wpi.first.wpilibj.SpeedControllerGroup;
+import edu.wpi.first.wpilibj.SpeedController;
 // Subsystem system
 import edu.wpi.first.wpilibj.command.Subsystem;
 // Motor controller
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
-import edu.wpi.first.wpilibj.drive.DifferentialDrive;
+import edu.wpi.first.wpilibj.drive.MecanumDrive;
 
 /**
  * An example subsystem.  You can replace me with your own Subsystem.
@@ -20,51 +20,22 @@ import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 public class Drivetrain extends Subsystem {
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
-  WPI_TalonSRX leftFollowerMotor2;
-  WPI_TalonSRX leftFollowerMotor1;
-  WPI_TalonSRX rightFollowerMotor2;
-  WPI_TalonSRX rightFollowerMotor1;
-  WPI_TalonSRX leftLeaderMotor;
-  WPI_TalonSRX rightLeaderMotor;
-  WPI_TalonSRX grabberWheelsRight;
-  WPI_TalonSRX grabberWheelsLeft;
-  WPI_TalonSRX lift;
-  DifferentialDrive drive;
-  SpeedControllerGroup left;
-  SpeedControllerGroup right;
-  // moves the lift motor
-  public void moveLiftMotor(double amount) {
-      lift.set(amount);
-  }
-
-  public void driveForwardLeft(double amount) {
-      leftLeaderMotor.set(amount);
-      leftFollowerMotor1.set(amount);
-      leftFollowerMotor2.set(amount);
-  }
-
-  public void driveForwardRight(double amount) {
-    rightLeaderMotor.set(amount);
-    rightFollowerMotor1.set(amount);
-}
+  WPI_TalonSRX frontLeftMotor;
+  WPI_TalonSRX backLeftMotor;
+  WPI_TalonSRX frontRightMotor;
+  WPI_TalonSRX backRightMotor; 
+  MecanumDrive drive;
 
   // Drivetrain public objects
   public Drivetrain () {
-    leftFollowerMotor2 = new WPI_TalonSRX(1);
-	leftFollowerMotor1 = new WPI_TalonSRX(5);
-	rightFollowerMotor2 = new WPI_TalonSRX(6);
-	rightFollowerMotor1 = new WPI_TalonSRX(2);
-    leftLeaderMotor = new WPI_TalonSRX(3);
-	rightLeaderMotor = new WPI_TalonSRX(4);
-	grabberWheelsRight = new WPI_TalonSRX(9);
-	grabberWheelsLeft = new WPI_TalonSRX(7);
-    lift = new WPI_TalonSRX(10);
-    left = new SpeedControllerGroup(leftLeaderMotor, leftFollowerMotor1, leftFollowerMotor2);
-    right = new SpeedControllerGroup(rightLeaderMotor, rightFollowerMotor1, rightFollowerMotor2);
-    drive = new DifferentialDrive(left, right);
+    frontLeftMotor = new WPI_TalonSRX(1);
+    backLeftMotor = new WPI_TalonSRX(2);
+    frontRightMotor = new WPI_TalonSRX(3);
+    backRightMotor = new WPI_TalonSRX(4);
+    drive = new MecanumDrive(frontLeftMotor, backLeftMotor, frontRightMotor, backRightMotor);
   }
 
-  public DifferentialDrive getDrive() {
+  public MecanumDrive getDrive() {
       return drive;
   }
 

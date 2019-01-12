@@ -15,7 +15,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 // import frc.robot.commands.ExampleCommand;
 import frc.robot.subsystems.Drivetrain;
 import frc.robot.subsystems.Pneumatics;
-import frc.robot.commands.TankDrive;
+import frc.robot.commands.MDrive;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -114,7 +114,7 @@ public class Robot extends TimedRobot {
     // teleop starts running. If you want the autonomous to
     // continue until interrupted by another command, remove
     // this line or comment it out.
-    new TankDrive();
+    new MDrive();
     if (m_autonomousCommand != null) {
       m_autonomousCommand.cancel();
     }
