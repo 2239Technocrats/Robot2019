@@ -37,7 +37,7 @@ public class MDrive extends Command {
   @Override
   protected boolean isFinished() {
     System.out.println("isFinished(); on exampleCommand");
-    return true;
+    return false;
   }
 
   // Called once after isFinished returns true

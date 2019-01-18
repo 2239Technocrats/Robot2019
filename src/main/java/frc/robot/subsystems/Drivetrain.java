@@ -32,7 +32,12 @@ public class Drivetrain extends Subsystem {
     backLeftMotor = new WPI_TalonSRX(2);
     frontRightMotor = new WPI_TalonSRX(3);
     backRightMotor = new WPI_TalonSRX(4);
+    frontLeftMotor.setExpiration(0.5);
+    frontRightMotor.setExpiration(0.5);
+    backLeftMotor.setExpiration(0.5);
+    backRightMotor.setExpiration(0.5);
     drive = new MecanumDrive(frontLeftMotor, backLeftMotor, frontRightMotor, backRightMotor);
+    
   }
 
   public MecanumDrive getDrive() {
