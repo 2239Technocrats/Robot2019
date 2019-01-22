@@ -13,7 +13,8 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 // Motor controller
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import edu.wpi.first.wpilibj.drive.MecanumDrive;
-
+// Commands
+import frc.robot.commands.MDrive;
 /**
  * An example subsystem.  You can replace me with your own Subsystem.
  */
@@ -47,7 +48,7 @@ public class Drivetrain extends Subsystem {
   @Override
   public void initDefaultCommand() {
     // Set the default command for a subsystem here.
-    // setDefaultCommand(new MySpecialCommand());
+    setDefaultCommand(new MDrive());
   }
 
 }

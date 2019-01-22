@@ -36,7 +36,6 @@ public class OI {
   MecanumDrive drive;
   public OI (Drivetrain drivetrain) {
     drive = drivetrain.getDrive();
-    new MDrive();
   }
 
   public XboxController getXboxController(){

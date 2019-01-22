@@ -14,7 +14,6 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 // import frc.robot.commands.ExampleCommand;
 import frc.robot.subsystems.Drivetrain;
-import frc.robot.subsystems.Pneumatics;
 import frc.robot.commands.MDrive;
 
 /**
@@ -26,7 +25,6 @@ import frc.robot.commands.MDrive;
  */
 public class Robot extends TimedRobot {
   public static Drivetrain drivetrain = new Drivetrain();
-  public static Pneumatics pneumatics = new Pneumatics();
   public static OI oi;
 
   Command m_autonomousCommand;
@@ -38,7 +36,7 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void robotInit() {
-    // oi = new OI(drivetrain);
+    oi = new OI(drivetrain);
     // m_chooser.addDefault("Default Auto", new ExampleCommand());
     // // chooser.addObject("My Auto", new MyAutoCommand());
     // SmartDashboard.putData("Auto mode", m_chooser);
@@ -114,7 +112,6 @@ public class Robot extends TimedRobot {
     // teleop starts running. If you want the autonomous to
     // continue until interrupted by another command, remove
     // this line or comment it out.
-    new MDrive();
     if (m_autonomousCommand != null) {
       m_autonomousCommand.cancel();
     }

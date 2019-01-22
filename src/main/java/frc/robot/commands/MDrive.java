@@ -30,13 +30,13 @@ public class MDrive extends Command {
   @Override
   protected void execute() {
     System.out.println("execute(); on tankdrive");
-    drive.driveCartesian(testXbox.getRawAxis(1), testXbox.getRawAxis(0), testXbox.getRawAxis(4));
+    drive.driveCartesian(0.4*testXbox.getRawAxis(0), -0.4*testXbox.getRawAxis(1), 0.4*testXbox.getRawAxis(4));
   }
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    System.out.println("isFinished(); on exampleCommand");
+    // System.out.println("isFinished(); on exampleCommand")
     return false;
   }
 
