@@ -30,7 +30,7 @@ public class MDrive extends Command {
   @Override
   protected void execute() {
     System.out.println("execute(); on tankdrive");
-    drive.driveCartesian(0.7*testXbox.getRawAxis(0), -0.7*testXbox.getRawAxis(1), 0.7*testXbox.getRawAxis(4));
+    drive.driveCartesian(0.7*testXbox.getRawAxis(0), -0.7*testXbox.getRawAxis(1), 0.5*testXbox.getRawAxis(4));
   }
 
   // Make this return true when this Command no longer needs to run execute()
