@@ -11,7 +11,7 @@ import frc.robot.commands.*;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
-import edu.wpi.first.wpilibj.drive.MecanumDrive;
+import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import frc.robot.subsystems.Drivetrain;
 
 /**
@@ -33,7 +33,7 @@ public class OI {
   JoystickButton b10 = new JoystickButton(testXbox, 10);
   JoystickButton b11 = new JoystickButton(testXbox, 11);
   JoystickButton b12 = new JoystickButton(testXbox, 12);
-  MecanumDrive drive;
+  DifferentialDrive drive;
   public int speed;
   public OI (Drivetrain drivetrain) {
     drive = drivetrain.getDrive();
