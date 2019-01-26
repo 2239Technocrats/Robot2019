@@ -34,14 +34,21 @@ public class OI {
   JoystickButton b11 = new JoystickButton(testXbox, 11);
   JoystickButton b12 = new JoystickButton(testXbox, 12);
   MecanumDrive drive;
+  public int speed;
   public OI (Drivetrain drivetrain) {
     drive = drivetrain.getDrive();
+    
   }
 
   public XboxController getXboxController(){
     return testXbox;
   }
 
+  public int getSpeed(){
+    return speed;
+  }
+
+  
   //// CREATING BUTTONS
   // One type of button is a joystick button which is any button on a
   //// joystick.
