@@ -28,10 +28,8 @@ public class Drivetrain extends Subsystem {
   // here. Call these from Commands.
   WPI_TalonSRX leftMotor1;
   WPI_TalonSRX leftMotor2;
-  WPI_TalonSRX leftMotor3;
   WPI_TalonSRX rightMotor1;
-  WPI_TalonSRX rightMotor2; 
-  WPI_TalonSRX rightMotor3;
+  WPI_TalonSRX rightMotor2;
   SpeedControllerGroup left;
   SpeedControllerGroup right;
   DifferentialDrive drive;
@@ -40,16 +38,14 @@ public class Drivetrain extends Subsystem {
   public Drivetrain () {
     leftMotor1 = new WPI_TalonSRX(1);
     leftMotor2 = new WPI_TalonSRX(2);
-    leftMotor3 = new WPI_TalonSRX(3);
-    rightMotor1 = new WPI_TalonSRX(4);
-    rightMotor2 = new WPI_TalonSRX(5);
-    rightMotor3 = new WPI_TalonSRX(6);
+    rightMotor1 = new WPI_TalonSRX(3);
+    rightMotor2 = new WPI_TalonSRX(4);
     leftMotor1.setExpiration(0.5);
     leftMotor2.setExpiration(0.5);
-    leftMotor3.setExpiration(0.5);
     rightMotor1.setExpiration(0.5);
     rightMotor2.setExpiration(0.5);
-    rightMotor3.setExpiration(0.5);
+    left = new SpeedControllerGroup(leftMotor1, leftMotor2);
+    right = new SpeedControllerGroup(rightMotor1, rightMotor2);
     drive = new DifferentialDrive(left, right);
     
   }
