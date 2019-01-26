@@ -8,6 +8,7 @@
 package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj.SpeedController;
+import edu.wpi.first.wpilibj.SpeedControllerGroup;
 // Subsystem system
 import edu.wpi.first.wpilibj.command.Subsystem;
 // Motor controller
@@ -25,6 +26,8 @@ public class Drivetrain extends Subsystem {
   WPI_TalonSRX backLeftMotor;
   WPI_TalonSRX frontRightMotor;
   WPI_TalonSRX backRightMotor; 
+  SpeedControllerGroup left;
+  SpeedControllerGroup right;
   MecanumDrive drive;
 
   // Drivetrain public objects
