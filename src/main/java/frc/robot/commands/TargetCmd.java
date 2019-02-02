@@ -43,11 +43,10 @@ public abstract class TargetCmd extends Command
     @Override
     protected boolean isFinished(){
         TargetData data = targetSource.getTargetData();
-        return data.width == getFinishedWidth() 
+        return data.width >= getFinishedWidth()
             && data.horizontalOffset > (-1 * getOffsetTolerance())
             && data.horizontalOffset < getOffsetTolerance();
     }
-
 
     protected abstract int getFinishedWidth();
 
