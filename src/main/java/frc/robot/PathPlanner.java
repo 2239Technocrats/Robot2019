@@ -16,7 +16,7 @@ public class PathPlanner {
   
   pubic double[][][] getBezier(double x, double y, double theta, double time) {
   
-    \\create control points
+    //create control points
     
     double P0x = 0;
     double P0y = 0;
@@ -27,7 +27,7 @@ public class PathPlanner {
     double P2x = x-b*Math.cos(theta);
     double P2y = y-b*Math.sin(theta);
     
-    \\Generate cubic Bezier curve
+    //Generate cubic Bezier curve
     
     double[][] bezier;
     double[][] bezierFirstDerivative;
@@ -48,7 +48,7 @@ public class PathPlanner {
       bezierSecondDerivative[i][1] = 6*(1-t)*(P2x-2*P1x+P0x)+6*t*(P3x-2*P2x+P1x);
     }
     
-    \\generate profiles
+    //generate profiles
     
     double[][] leftprofile;
     double[][] rightprofile;
