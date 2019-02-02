@@ -16,6 +16,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.subsystems.Drivetrain;
 import frc.robot.subsystems.Arduino;
 import frc.robot.commands.TDrive;
+import frc.robot.subsystems.Pixy;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -26,7 +27,8 @@ import frc.robot.commands.TDrive;
  */
 public class Robot extends TimedRobot {
   public static Drivetrain drivetrain = new Drivetrain();
-  public static Arduino arduino = new Arduino();
+  //public static Arduino arduino = new Arduino();
+  public static Pixy pixy = new Pixy();
   public static OI oi;
 
   Command m_autonomousCommand;

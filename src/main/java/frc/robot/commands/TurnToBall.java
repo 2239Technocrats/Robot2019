@@ -17,7 +17,7 @@ public class TurnToBall extends Command {
   public TurnToBall() {
     // Use requires() here to declare subsystem dependencies
     requires(Robot.drivetrain);
-    requires(Robot.arduino);
+    requires(Robot.pixy);
   }
 
   // Called just before this Command runs the first time
@@ -28,10 +28,11 @@ public class TurnToBall extends Command {
 
   // Called repeatedly when this Command is scheduled to run
   @Override
-  protected void execute() {
-    //System.out.println(Robot.arduino.getBallLocation()[0]);
-    //System.out.println(Robot.arduino.getBallLocation()[1]);
-    //System.out.println();
+  protected void execute(){
+    try{System.out.println(Robot.pixy.getBallLocation()[0]+","+Robot.pixy.getBallLocation()[1]);
+    }catch(InterruptedException e){
+      System.out.println("Exception thrown");
+    }
   }
 
   // Make this return true when this Command no longer needs to run execute()
