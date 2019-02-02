@@ -75,6 +75,8 @@ public class PathPlanner {
       leftprofile[i][0] = integralLeft*encoderTicksPerMeter;
       rightprofile[i][0] = integralRight*encoderTicksPerMeter;
     }
+    double[][][] profiles = {leftprofile, rightprofile};
+    return profiles;
   }
 
 }
