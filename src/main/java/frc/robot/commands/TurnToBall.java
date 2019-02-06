@@ -7,6 +7,7 @@ import frc.robot.OI;
 import edu.wpi.first.wpilibj.drive.*;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.GenericHID.Hand;
+import java.util.Arrays;
 
 /**
  * An example command.  You can replace me with your own command.
@@ -29,10 +30,7 @@ public class TurnToBall extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute(){
-    try{System.out.println(Robot.pixy.getBallLocation()[0]+","+Robot.pixy.getBallLocation()[1]);
-    }catch(InterruptedException e){
-      System.out.println("Exception thrown");
-    }
+    System.out.println(Robot.pixy.getBallLocation()+"  ,  "+Robot.pixy.isDetected());
   }
 
   // Make this return true when this Command no longer needs to run execute()
