@@ -31,7 +31,7 @@ public class TDrive extends Command {
   @Override
   protected void execute() {
     System.out.println("execute(); on tankdrive");
-    drive.tankDrive(-0.75*speed*testXbox.getRawAxis(1)+0.2*speed*testXbox.getRawAxis(4), -0.75*speed*testXbox.getRawAxis(1)+0.2*-speed*testXbox.getRawAxis(4));
+    drive.tankDrive(0.6*speed*testXbox.getRawAxis(1)+0.2*speed*testXbox.getRawAxis(4), 0.6*speed*testXbox.getRawAxis(1)-0.2*speed*testXbox.getRawAxis(4));
   }
 
   // Make this return true when this Command no longer needs to run execute()

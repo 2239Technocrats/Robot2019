@@ -17,26 +17,37 @@ public class Pixy extends Subsystem {
     // here. Call these from Commands.
     AnalogInput pixy_x;
     DigitalInput pixy_on;
-
+    double counter;
+    double averageVoltage;
+    boolean isDetected = false;
     // Drivetrain public objects
     public Pixy() {
         pixy_x = new AnalogInput(0);
-        pixy_x.setOversampleBits(4);
-        pixy_x.setAverageBits(4);
+        pixy_x.setOversampleBits(2);
+        pixy_x.setAverageBits(2);
         pixy_on = new DigitalInput(0);
+        counter = 0;
     }
 
     public double getBallLocation() {
-        return pixy_x.getAverageVoltage();
+        if (counter%20==0){
+            averageVoltage = pixy_x.getAverageVoltage();
+        }
+        counter +=1 ;
+        return averageVoltage;
     }
 
     public boolean isDetected() {
-        return pixy_on.get();
+        if (counter%20==0){
+            isDetected = pixy_on.get();
+        }
+        counter +=1 ;
+        return isDetected;
     }
 
     @Override
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
-        setDefaultCommand(new TurnToBall());
+        //setDefaultCommand(new TurnToBall());
     }
 }

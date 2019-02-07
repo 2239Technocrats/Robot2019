@@ -37,7 +37,7 @@ public class OI {
   public int speed;
   public OI (Drivetrain drivetrain) {
     drive = drivetrain.getDrive();
-    
+    b1.whenPressed(new TurnToBall());
   }
 
   public XboxController getXboxController(){

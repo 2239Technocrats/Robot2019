@@ -13,7 +13,8 @@ import java.util.Arrays;
  * An example command.  You can replace me with your own command.
  */
 public class TurnToBall extends Command {
-    MecanumDrive drive;
+    public static final double TURN_SPEED=0.1;
+    DifferentialDrive drive;
     XboxController testXbox;
   public TurnToBall() {
     // Use requires() here to declare subsystem dependencies
@@ -24,13 +25,20 @@ public class TurnToBall extends Command {
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-
+    drive = Robot.drivetrain.getDrive();
   }
 
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute(){
     System.out.println(Robot.pixy.getBallLocation()+"  ,  "+Robot.pixy.isDetected());
+    if (Robot.pixy.isDetected()){
+      if(Robot.pixy.getBallLocation()>1.45){
+        drive.tankDrive(-0.6+TURN_SPEED*(Robot.pixy.getBallLocation()-1.65)/1.65, -0.6-TURN_SPEED*(Robot.pixy.getBallLocation()-1.65)/1.65);
+      }else{
+        drive.tankDrive(-0.6-TURN_SPEED*(1.65-Robot.pixy.getBallLocation())/1.65, -0.6+TURN_SPEED*(1.65-Robot.pixy.getBallLocation())/1.65);
+      }
+    }
   }
 
   // Make this return true when this Command no longer needs to run execute()
