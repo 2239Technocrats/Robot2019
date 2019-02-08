@@ -34,9 +34,9 @@ public class TurnToBall extends Command {
     System.out.println(Robot.pixy.getBallLocation()+"  ,  "+Robot.pixy.isDetected());
     if (Robot.pixy.isDetected()){
       if(Robot.pixy.getBallLocation()>1.45){
-        drive.tankDrive(-0.6+TURN_SPEED*(Robot.pixy.getBallLocation()-1.65)/1.65, -0.6-TURN_SPEED*(Robot.pixy.getBallLocation()-1.65)/1.65);
+        drive.tankDrive(-0.7+TURN_SPEED*Math.pow((Robot.pixy.getBallLocation()-1.65),3)/1.65, -0.7-TURN_SPEED*Math.pow((Robot.pixy.getBallLocation()-1.65),2)/1.65);
       }else{
-        drive.tankDrive(-0.6-TURN_SPEED*(1.65-Robot.pixy.getBallLocation())/1.65, -0.6+TURN_SPEED*(1.65-Robot.pixy.getBallLocation())/1.65);
+        drive.tankDrive(-0.7-TURN_SPEED*Math.pow((1.65-Robot.pixy.getBallLocation()),3)/1.65, -0.7+TURN_SPEED*Math.pow((1.65-Robot.pixy.getBallLocation()),2)/1.65);
       }
     }
   }
