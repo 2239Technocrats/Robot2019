@@ -19,29 +19,30 @@ import frc.robot.subsystems.Drivetrain;
  * interface to the commands and command groups that allow control of the robot.
  */
 public class OI {
-  XboxController testXbox = new XboxController(0);
+  XboxController controller = new XboxController(0);
   Joystick testJoystick = new Joystick(1);
-  JoystickButton b1 = new JoystickButton(testXbox, 1);
-  JoystickButton b2 = new JoystickButton(testXbox, 2);
-  JoystickButton b3 = new JoystickButton(testXbox, 3);
-  JoystickButton b4 = new JoystickButton(testXbox, 4);
-  JoystickButton b5 = new JoystickButton(testXbox, 5);
-  JoystickButton b6 = new JoystickButton(testXbox, 6);
-  JoystickButton b7 = new JoystickButton(testXbox, 7);
-  JoystickButton b8 = new JoystickButton(testXbox, 8);
-  JoystickButton b9 = new JoystickButton(testXbox, 9);
-  JoystickButton b10 = new JoystickButton(testXbox, 10);
-  JoystickButton b11 = new JoystickButton(testXbox, 11);
-  JoystickButton b12 = new JoystickButton(testXbox, 12);
+  JoystickButton b1 = new JoystickButton(controller, 1);
+  JoystickButton b2 = new JoystickButton(controller, 2);
+  JoystickButton b3 = new JoystickButton(controller, 3);
+  JoystickButton b4 = new JoystickButton(controller, 4);
+  JoystickButton b5 = new JoystickButton(controller, 5);
+  JoystickButton b6 = new JoystickButton(controller, 6);
+  JoystickButton b7 = new JoystickButton(controller, 7);
+  JoystickButton b8 = new JoystickButton(controller, 8);
+  JoystickButton b9 = new JoystickButton(controller, 9);
+  JoystickButton b10 = new JoystickButton(controller, 10);
+  JoystickButton b11 = new JoystickButton(controller, 11);
+  JoystickButton b12 = new JoystickButton(controller, 12);
   DifferentialDrive drive;
   public int speed;
   public OI (Drivetrain drivetrain) {
     drive = drivetrain.getDrive();
     b1.whileHeld(new TurnToBall());
+    b2.whileHeld(new DriveToHatch());
   }
 
   public XboxController getXboxController(){
-    return testXbox;
+    return controller;
   }
 
   public int getSpeed(){

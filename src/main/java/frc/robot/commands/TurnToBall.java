@@ -13,7 +13,17 @@ import java.util.Arrays;
  * An example command.  You can replace me with your own command.
  */
 public class TurnToBall extends Command {
-    public static final double TURN_SPEED=0.1;
+    /**
+   *
+   */
+
+  private static final double PIXY_MIDPOINT = 1.65;
+  /**
+  *
+  */
+
+  private static final double BASE_FORWARD_POWER = -0.7;
+  public static final double TURN_SPEED = 0.1;
     DifferentialDrive drive;
     XboxController testXbox;
   public TurnToBall() {
@@ -30,15 +40,32 @@ public class TurnToBall extends Command {
 
   // Called repeatedly when this Command is scheduled to run
   @Override
-  protected void execute(){
+  protected void execute() {
     System.out.println(Robot.pixy.getBallLocation()+"  ,  "+Robot.pixy.isDetected());
-    if (Robot.pixy.isDetected()){
-      if(Robot.pixy.getBallLocation()>1.45){
-        drive.tankDrive(-0.7+TURN_SPEED*Math.pow((Robot.pixy.getBallLocation()-1.65),3)/1.65, -0.7-TURN_SPEED*Math.pow((Robot.pixy.getBallLocation()-1.65),2)/1.65);
-      }else{
-        drive.tankDrive(-0.7-TURN_SPEED*Math.pow((1.65-Robot.pixy.getBallLocation()),3)/1.65, -0.7+TURN_SPEED*Math.pow((1.65-Robot.pixy.getBallLocation()),2)/1.65);
+    if (Robot.pixy.isDetected()) {
+      double distanceFromMidpoint;
+      double turnPower;
+      double location = Robot.pixy.getBallLocation();
+
+      if(isBallOnRight(location)) {
+        distanceFromMidpoint = Robot.pixy.getBallLocation()-PIXY_MIDPOINT;
+        turnPower = TURN_SPEED*Math.pow(distanceFromMidpoint,3)/PIXY_MIDPOINT;
+
+      } else {
+        distanceFromMidpoint = PIXY_MIDPOINT-Robot.pixy.getBallLocation();
+        turnPower = -TURN_SPEED*Math.pow(distanceFromMidpoint,3)/PIXY_MIDPOINT;
       }
+       drive.tankDrive(BASE_FORWARD_POWER+turnPower, 
+                       BASE_FORWARD_POWER-turnPower);
+      //511drive.tankDrive(0, 0);
+      System.out.println(String.format("Location: %f\tOffset: %f\tTurn Power: %f", Robot.pixy.getBallLocation(), distanceFromMidpoint, turnPower));
+    } else {
+      System.out.println("Ball not detected");
     }
+  }
+
+  private boolean isBallOnRight(double x) {
+    return x > PIXY_MIDPOINT;
   }
 
   // Make this return true when this Command no longer needs to run execute()
