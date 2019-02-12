@@ -17,7 +17,7 @@ import frc.robot.subsystems.Drivetrain;
 import frc.robot.subsystems.Arduino;
 import frc.robot.commands.TDrive;
 import frc.robot.subsystems.Pixy;
-import frc.robot.subsystems.Limelight;
+import frc.robot.subsystems.Pneumatics;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -30,8 +30,8 @@ public class Robot extends TimedRobot {
   public static Drivetrain drivetrain = new Drivetrain();
   //public static Arduino arduino = new Arduino();
   public static Pixy pixy = new Pixy();
-  public static Limelight limelight = new Limelight();
   public static OI oi;
+  public static Pneumatics pneumatics = new Pneumatics();
 
   Command m_autonomousCommand;
   SendableChooser<Command> m_chooser = new SendableChooser<>();

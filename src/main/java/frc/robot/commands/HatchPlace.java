@@ -5,36 +5,15 @@
  package frc.robot.commands;
 
  import edu.wpi.first.wpilibj.command.Command;
-import frc.robot.subsystems.*;
+ import edu.wpi.first.wpilibj.command.CommandGroup;
+ import frc.robot.subsystems.*;
 
- public class HatchPlace extends Command{
-
+ public class HatchPlace extends CommandGroup{
 
     public HatchPlace(){
-    
+        //ExtendClaw();
+        //CloseClaw();
+        //RetractClaw();
     }
 
-    @Override
-    protected void initialize(){
-    
-    }
-
-    protected void execute(){
-    
-    }
-
-    @Override
-    protected boolean isFinished(){
-        return true;
-    }
-    
-    @Override
-    protected void end() {
-
-    }
-
-    @Override
-    protected void interrupted() {
-        
-    }
  }

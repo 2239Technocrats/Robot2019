@@ -7,10 +7,11 @@ public class Pneumatics extends Subsystem {
     //collection of all of the solenoid index:port on PCM
     public Solenoid[] allSolenoids = new Solenoid[1];
 
-    public Solenoid solenoid1;
+    public Solenoid literallyTheOnlySolenoidCuzOurRobotIsTrash;
     // Solenoid public objects
     public Pneumatics () {
-      solenoid1 = new Solenoid(0);
+        literallyTheOnlySolenoidCuzOurRobotIsTrash = new Solenoid(0);
+        allSolenoids[0] = literallyTheOnlySolenoidCuzOurRobotIsTrash;
     }
   
     public Solenoid getSolenoid(int index) {
