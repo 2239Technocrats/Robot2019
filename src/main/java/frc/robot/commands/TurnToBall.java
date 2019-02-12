@@ -7,12 +7,24 @@ import frc.robot.OI;
 import edu.wpi.first.wpilibj.drive.*;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.GenericHID.Hand;
+import java.util.Arrays;
 
 /**
  * An example command.  You can replace me with your own command.
  */
 public class TurnToBall extends Command {
-    MecanumDrive drive;
+    /**
+   *
+   */
+
+  private static final double PIXY_MIDPOINT = 1.65;
+  /**
+  *
+  */
+
+  private static final double BASE_FORWARD_POWER = -0.7;
+  public static final double TURN_SPEED = 0.1;
+    DifferentialDrive drive;
     XboxController testXbox;
   public TurnToBall() {
     // Use requires() here to declare subsystem dependencies
@@ -23,16 +35,37 @@ public class TurnToBall extends Command {
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-
+    drive = Robot.drivetrain.getDrive();
   }
 
   // Called repeatedly when this Command is scheduled to run
   @Override
-  protected void execute(){
-    try{System.out.println(Robot.pixy.getBallLocation()[0]+","+Robot.pixy.getBallLocation()[1]);
-    }catch(InterruptedException e){
-      System.out.println("Exception thrown");
+  protected void execute() {
+    System.out.println(Robot.pixy.getBallLocation()+"  ,  "+Robot.pixy.isDetected());
+    if (Robot.pixy.isDetected()) {
+      double distanceFromMidpoint;
+      double turnPower;
+      double location = Robot.pixy.getBallLocation();
+
+      if(isBallOnRight(location)) {
+        distanceFromMidpoint = Robot.pixy.getBallLocation()-PIXY_MIDPOINT;
+        turnPower = TURN_SPEED*Math.pow(distanceFromMidpoint,3)/PIXY_MIDPOINT;
+
+      } else {
+        distanceFromMidpoint = PIXY_MIDPOINT-Robot.pixy.getBallLocation();
+        turnPower = -TURN_SPEED*Math.pow(distanceFromMidpoint,3)/PIXY_MIDPOINT;
+      }
+       drive.tankDrive(-BASE_FORWARD_POWER+turnPower, 
+                       -BASE_FORWARD_POWER-turnPower);
+      //511drive.tankDrive(0, 0);
+      System.out.println(String.format("Location: %f\tOffset: %f\tTurn Power: %f", Robot.pixy.getBallLocation(), distanceFromMidpoint, turnPower));
+    } else {
+      System.out.println("Ball not detected");
     }
+  }
+
+  private boolean isBallOnRight(double x) {
+    return x > PIXY_MIDPOINT;
   }
 
   // Make this return true when this Command no longer needs to run execute()

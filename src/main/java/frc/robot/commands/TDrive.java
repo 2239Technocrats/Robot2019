@@ -13,7 +13,7 @@ import edu.wpi.first.wpilibj.GenericHID.Hand;
  */
 public class TDrive extends Command {
     DifferentialDrive drive;
-    XboxController testXbox;
+    XboxController controller;
     public int speed = 1;
   public TDrive() {
     // Use requires() here to declare subsystem dependencies
@@ -24,14 +24,23 @@ public class TDrive extends Command {
   @Override
   protected void initialize() {
       drive = Robot.drivetrain.getDrive();
-      testXbox = Robot.oi.getXboxController();
+      controller = Robot.oi.getXboxController();
   }
 
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    System.out.println("execute(); on tankdrive");
-    drive.tankDrive(-0.75*speed*testXbox.getRawAxis(1)+0.2*speed*testXbox.getRawAxis(4), -0.75*speed*testXbox.getRawAxis(1)+0.2*-speed*testXbox.getRawAxis(4));
+    // System.out.println("execute(); on tankdrive");
+    // drive.tankDrive(0.6*speed*testXbox.getRawAxis(1)+0.2*speed*testXbox.getRawAxis(4), 0.6*speed*testXbox.getRawAxis(1)-0.2*speed*testXbox.getRawAxis(4));
+    double driveleft  = controller.getRawAxis(5);
+    double driveright = controller.getRawAxis(1);
+    if (Math.abs(driveleft)<0.05){
+      driveleft = 0;
+    }
+    if (Math.abs(driveright)<0.05){
+      driveright = 0;
+    }
+    drive.tankDrive(driveleft, driveright,true);
   }
 
   // Make this return true when this Command no longer needs to run execute()
