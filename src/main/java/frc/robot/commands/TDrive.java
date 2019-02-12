@@ -14,7 +14,7 @@ import edu.wpi.first.wpilibj.GenericHID.Hand;
 public class TDrive extends Command {
     DifferentialDrive drive;
     XboxController controller;
-    public double speed = .5;
+    public double speed = .8;
   public TDrive() {
     // Use requires() here to declare subsystem dependencies
     requires(Robot.drivetrain);
