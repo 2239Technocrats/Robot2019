@@ -25,6 +25,7 @@ public class DriveToHatch extends Command {
   public DriveToHatch() {
     // Use requires() here to declare subsystem dependencies
     requires(Robot.limelight);
+    requires(Robot.drivetrain);
   }
 
   // Called just before this Command runs the first time
@@ -37,19 +38,29 @@ public class DriveToHatch extends Command {
   @Override
   protected void execute(){
     double[] limelightdata = Robot.limelight.getTapeLocation();
-    
     System.out.println(String.format("Limelight X: %f", limelightdata[0]));
-    double percentError = -limelightdata[0]/500;
-    System.out.println(percentError);
-    if(percentError<=0){
-        drive.tankDrive(FORWARD_SPEED, FORWARD_SPEED*(1-percentError));
+
+    if (isTargetVisible(limelightdata)) {
+      double percentError = -limelightdata[0]/500;
+      System.out.println(percentError);
+      if(percentError<=0){
+        // drive.tankDrive(FORWARD_SPEED, FORWARD_SPEED*(1-percentError));
       }else{
-        drive.tankDrive(FORWARD_SPEED*(-1-percentError), FORWARD_SPEED);
+        // drive.tankDrive(FORWARD_SPEED*(-1-percentError), FORWARD_SPEED);
       }
-      SmartDashboard.putNumber("LimelightX",limelightdata[0]);
-      SmartDashboard.putNumber("LimelightY",limelightdata[1]);
-      SmartDashboard.putNumber("LimelightArea", limelightdata[2]);
-      System.out.println("Executing DriveToHatch");
+      drive.tankDrive(0,0);
+    } else {
+      drive.tankDrive(0,0);
+    }
+
+    SmartDashboard.putNumber("LimelightX",limelightdata[0]);
+    SmartDashboard.putNumber("LimelightY",limelightdata[1]);
+    SmartDashboard.putNumber("LimelightArea", limelightdata[2]);
+    System.out.println("Executing DriveToHatch");
+  }
+
+  private boolean isTargetVisible(double[] data) {
+    return data.length > 2 && data[2] > 0.01;
   }
 
   // Make this return true when this Command no longer needs to run execute()

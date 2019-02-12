@@ -55,8 +55,8 @@ public class TurnToBall extends Command {
         distanceFromMidpoint = PIXY_MIDPOINT-Robot.pixy.getBallLocation();
         turnPower = -TURN_SPEED*Math.pow(distanceFromMidpoint,3)/PIXY_MIDPOINT;
       }
-       drive.tankDrive(BASE_FORWARD_POWER+turnPower, 
-                       BASE_FORWARD_POWER-turnPower);
+       drive.tankDrive(-BASE_FORWARD_POWER+turnPower, 
+                       -BASE_FORWARD_POWER-turnPower);
       //511drive.tankDrive(0, 0);
       System.out.println(String.format("Location: %f\tOffset: %f\tTurn Power: %f", Robot.pixy.getBallLocation(), distanceFromMidpoint, turnPower));
     } else {
