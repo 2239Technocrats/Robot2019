@@ -16,8 +16,8 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.subsystems.Drivetrain;
 import frc.robot.subsystems.Arduino;
 import frc.robot.commands.TDrive;
+import frc.robot.commands.setBMHeight;
 import frc.robot.subsystems.Pixy;
-import frc.robot.subsystems.Pneumatics;
 import frc.robot.subsystems.Limelight;
 
 /**
@@ -33,7 +33,6 @@ public class Robot extends TimedRobot {
   //public static Arduino arduino = new Arduino();
   public static Pixy pixy = new Pixy();
   public static OI oi;
-  public static Pneumatics pneumatics = new Pneumatics();
 
   Command m_autonomousCommand;
   SendableChooser<Command> m_chooser = new SendableChooser<>();
@@ -70,7 +69,7 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void disabledInit() {
-
+    new setBMHeight(0);
   }
 
   @Override
