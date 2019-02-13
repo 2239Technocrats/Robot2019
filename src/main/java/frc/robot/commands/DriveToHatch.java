@@ -1,4 +1,3 @@
-
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
@@ -8,6 +7,7 @@ import edu.wpi.first.wpilibj.drive.*;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.GenericHID.Hand;
+import edu.wpi.first.wpilibj.smartdashboard.*;
 import java.util.Arrays;
 
 /**
@@ -38,21 +38,25 @@ public class DriveToHatch extends Command {
   @Override
   protected void execute(){
     double[] limelightdata = Robot.limelight.getTapeLocation();
-    System.out.println(String.format("Limelight X: %f", limelightdata[0]));
+    //System.out.println(String.format("Limelight X: %f", limelightdata[0]));
 
     if (isTargetVisible(limelightdata)) {
-      double percentError = -limelightdata[0]/500;
-      System.out.println(percentError);
+      double percentError = limelightdata[0]/500;
+      SmartDashboard.putNumber("PercentError", percentError);
       if(percentError<=0){
-        // drive.tankDrive(FORWARD_SPEED, FORWARD_SPEED*(1-percentError));
+        drive.tankDrive(FORWARD_SPEED, FORWARD_SPEED*(-1+percentError));
+        SmartDashboard.putNumber("DriveLeft", FORWARD_SPEED);
+        SmartDashboard.putNumber("DriveRight", FORWARD_SPEED*(-1+percentError));
       }else{
-        // drive.tankDrive(FORWARD_SPEED*(-1-percentError), FORWARD_SPEED);
+        drive.tankDrive(FORWARD_SPEED*(1-percentError), FORWARD_SPEED);
+        SmartDashboard.putNumber("DriveLeft", FORWARD_SPEED*(1-percentError));
+        SmartDashboard.putNumber("DriveRight", FORWARD_SPEED);
       }
-      drive.tankDrive(0,0);
     } else {
       drive.tankDrive(0,0);
     }
 
+    SmartDashboard.putBoolean("TargetVisible", isTargetVisible(limelightdata));
     SmartDashboard.putNumber("LimelightX",limelightdata[0]);
     SmartDashboard.putNumber("LimelightY",limelightdata[1]);
     SmartDashboard.putNumber("LimelightArea", limelightdata[2]);
