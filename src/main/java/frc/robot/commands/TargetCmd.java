@@ -34,9 +34,9 @@ public abstract class TargetCmd extends Command
         velocityOffset += getAlignVelocityOffset(targetData);
         
         if(velocityOffset < 0) {
-            drivetrain.drive(Drivetrain.MAX_VELOCITY - -(velocityOffset/300), Drivetrain.MAX_VELOCITY);
+            drivetrain.drive(Drivetrain.MAX_VELOCITY * -velocityOffset, Drivetrain.MAX_VELOCITY);
         } else {
-            drivetrain.drive(Drivetrain.MAX_VELOCITY, Drivetrain.MAX_VELOCITY - (velocityOffset/300));
+            drivetrain.drive(Drivetrain.MAX_VELOCITY, Drivetrain.MAX_VELOCITY * velocityOffset);
         }
     }
 

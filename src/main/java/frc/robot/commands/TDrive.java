@@ -32,7 +32,7 @@ public class TDrive extends Command {
   protected void execute() {
     // System.out.println("execute(); on tankdrive");
     // drive.tankDrive(0.6*speed*testXbox.getRawAxis(1)+0.2*speed*testXbox.getRawAxis(4), 0.6*speed*testXbox.getRawAxis(1)-0.2*speed*testXbox.getRawAxis(4));
-    drive.arcadeDrive(controller.getRawAxis(1)*speed, controller.getRawAxis(0)*speed, true);
+    drive.tankDrive(controller.getRawAxis(5)*speed, controller.getRawAxis(1)*speed, true);
   }
 
   // Make this return true when this Command no longer needs to run execute()
