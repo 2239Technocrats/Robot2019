@@ -44,11 +44,11 @@ public class DriveToHatch extends Command {
       double percentError = limelightdata[0]/500;
       SmartDashboard.putNumber("PercentError", percentError);
       if(percentError<=0){
-        drive.tankDrive(FORWARD_SPEED, FORWARD_SPEED*(-1+percentError));
+        //drive.tankDrive(FORWARD_SPEED, FORWARD_SPEED*(-1+percentError));
         SmartDashboard.putNumber("DriveLeft", FORWARD_SPEED);
         SmartDashboard.putNumber("DriveRight", FORWARD_SPEED*(-1+percentError));
       }else{
-        drive.tankDrive(FORWARD_SPEED*(1-percentError), FORWARD_SPEED);
+        //drive.tankDrive(FORWARD_SPEED*(1-percentError), FORWARD_SPEED);
         SmartDashboard.putNumber("DriveLeft", FORWARD_SPEED*(1-percentError));
         SmartDashboard.putNumber("DriveRight", FORWARD_SPEED);
       }
@@ -61,6 +61,7 @@ public class DriveToHatch extends Command {
     SmartDashboard.putNumber("LimelightY",limelightdata[1]);
     SmartDashboard.putNumber("LimelightArea", limelightdata[2]);
     System.out.println("Executing DriveToHatch");
+    SmartDashboard.putNumber("Distance to target", Robot.limelight.getDistance());
   }
 
   private boolean isTargetVisible(double[] data) {
