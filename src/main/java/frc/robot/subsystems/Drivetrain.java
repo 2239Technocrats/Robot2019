@@ -13,6 +13,7 @@ import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.command.Subsystem;
 // Motor controller
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.drive.MecanumDrive;
@@ -27,27 +28,41 @@ public class Drivetrain extends Subsystem {
 
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
-  VelocityTalon leftMotor1;
-  VelocityTalon leftMotor2;
-  VelocityTalon rightMotor1;
-  VelocityTalon rightMotor2;
+
+  public boolean mode = true;
+  public double speed = .75;
+
+  WPI_TalonSRX leftMotorM;
+  WPI_VictorSPX leftMotorS;
+  WPI_TalonSRX rightMotorM;
+  WPI_VictorSPX rightMotorS;
+  WPI_TalonSRX leftLift;
+  WPI_TalonSRX rightLift;
   SpeedControllerGroup left;
   SpeedControllerGroup right;
+  SpeedControllerGroup lift;
   DifferentialDrive drive;
+
 
   // Drivetrain public objects
   public Drivetrain () {
-    leftMotor1 = new VelocityTalon(1);
-    leftMotor2 = new VelocityTalon(2);
-    rightMotor1 = new VelocityTalon(3);
-    rightMotor2 = new VelocityTalon(4);
-    leftMotor1.setExpiration(0.5);
-    leftMotor2.setExpiration(0.5);
-    rightMotor1.setExpiration(0.5);
-    rightMotor2.setExpiration(0.5);
-    left = new SpeedControllerGroup(leftMotor1, leftMotor2);
-    right = new SpeedControllerGroup(rightMotor1, rightMotor2);
+    leftMotorM = new WPI_TalonSRX(1);
+    leftMotorS = new WPI_VictorSPX(2);
+    rightMotorM = new WPI_TalonSRX(3);
+    rightMotorS = new WPI_VictorSPX(4);
+    leftLift = new WPI_TalonSRX(5);
+    rightLift = new WPI_TalonSRX(6);
+    leftMotorM.setExpiration(0.5);
+    leftMotorS.setExpiration(0.5);
+    rightMotorM.setExpiration(0.5);
+    rightMotorS.setExpiration(0.5);
+    leftLift.setExpiration(0.5);
+    rightLift.setExpiration(0.5);
+    left = new SpeedControllerGroup(leftMotorM, leftMotorS);
+    right = new SpeedControllerGroup(rightMotorM, rightMotorS);
+    lift = new SpeedControllerGroup(leftLift, rightLift);
     drive = new DifferentialDrive(left, right);
+
     
   }
 
@@ -65,4 +80,15 @@ public class Drivetrain extends Subsystem {
     System.out.println(String.format("Left: %d\tRight: %d", left, right));
   }
 
+  public void setMode(boolean mode){
+    this.mode = mode;
+  }
+
+  public void setSpeed(double speed){
+    this.speed = speed;
+  }
+
+  public double getSpeed(){
+    return speed;
+  }
 }

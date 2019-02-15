@@ -37,8 +37,17 @@ public class OI {
   public int speed;
   public OI (Drivetrain drivetrain) {
     drive = drivetrain.getDrive();
-    b1.whileHeld(new TurnToBall());
+    // b1.whileHeld(new TurnToBall());
     b2.whileHeld(new DriveToHatch());
+    b5.whenPressed(new ToggleHatchManipulator());
+    b6.whenPressed(new ToggleHatchManipulator());
+    b7.whenPressed(new ToggleDrivingMode());
+    b8.whenPressed(new ToggleDrivingMode());
+
+    //speed controls
+    b1.whenPressed(new SetDriveSpeed(.5));
+    b3.whenPressed(new SetDriveSpeed(.75));
+    b4.whenPressed(new SetDriveSpeed(1.0));
   }
 
   public XboxController getXboxController(){

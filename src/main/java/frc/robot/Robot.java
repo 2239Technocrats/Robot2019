@@ -19,6 +19,7 @@ import frc.robot.commands.TDrive;
 import frc.robot.commands.setBMHeight;
 import frc.robot.subsystems.Pixy;
 import frc.robot.subsystems.Limelight;
+import frc.robot.subsystems.HatchManipulator;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -30,6 +31,7 @@ import frc.robot.subsystems.Limelight;
 public class Robot extends TimedRobot {
   public static Drivetrain drivetrain = new Drivetrain();
   public static Limelight limelight = new Limelight();
+  public static HatchManipulator hatchManipulator = new HatchManipulator();
   //public static Arduino arduino = new Arduino();
   public static Pixy pixy = new Pixy();
   public static OI oi;

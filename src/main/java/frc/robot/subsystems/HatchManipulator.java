@@ -29,4 +29,8 @@ public class HatchManipulator extends Subsystem {
     public void setState(boolean state){
         solenoid.set(state);
     }
+
+    public boolean getState() {
+        return solenoid.get();
+    }
 }

@@ -14,7 +14,7 @@ import edu.wpi.first.wpilibj.GenericHID.Hand;
 public class TDrive extends Command {
     DifferentialDrive drive;
     XboxController controller;
-    public double speed = .8;
+    public double speed = Robot.drivetrain.speed;
   public TDrive() {
     // Use requires() here to declare subsystem dependencies
     requires(Robot.drivetrain);
@@ -31,8 +31,13 @@ public class TDrive extends Command {
   @Override
   protected void execute() {
     // System.out.println("execute(); on tankdrive");
-    // drive.tankDrive(0.6*speed*testXbox.getRawAxis(1)+0.2*speed*testXbox.getRawAxis(4), 0.6*speed*testXbox.getRawAxis(1)-0.2*speed*testXbox.getRawAxis(4));
-    drive.tankDrive(controller.getRawAxis(5)*speed, controller.getRawAxis(1)*speed, true);
+    if (Robot.drivetrain.mode){
+      drive.tankDrive(controller.getRawAxis(5)*speed, controller.getRawAxis(1)*speed, false);
+    } else if (!Robot.drivetrain.mode){
+      drive.arcadeDrive(controller.getRawAxis(1)*speed, controller.getRawAxis(0)*speed, false);
+    } else {
+      System.out.println("Driving mode not selected!!!!!!! FIX THIS IMMEDIATELY!!!!!");
+    }
   }
 
   // Make this return true when this Command no longer needs to run execute()
