@@ -32,16 +32,16 @@ public class Drivetrain extends Subsystem {
   public boolean mode = true;
   public double speed = .75;
 
-  WPI_TalonSRX leftMotorM;
-  WPI_VictorSPX leftMotorS;
-  WPI_TalonSRX rightMotorM;
-  WPI_VictorSPX rightMotorS;
-  WPI_TalonSRX leftLift;
-  WPI_TalonSRX rightLift;
-  SpeedControllerGroup left;
-  SpeedControllerGroup right;
-  SpeedControllerGroup lift;
-  DifferentialDrive drive;
+  public WPI_TalonSRX leftMotorM;
+  public WPI_VictorSPX leftMotorS;
+  public WPI_TalonSRX rightMotorM;
+  public WPI_VictorSPX rightMotorS;
+  public WPI_TalonSRX leftLift;
+  public WPI_TalonSRX rightLift;
+  public SpeedControllerGroup left;
+  public SpeedControllerGroup right;
+  public SpeedControllerGroup lift;
+  public DifferentialDrive drive;
 
 
   // Drivetrain public objects
