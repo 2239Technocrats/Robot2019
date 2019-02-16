@@ -30,7 +30,7 @@ public class TDrive extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    
+    speed = Robot.drivetrain.speed;
     // System.out.println("execute(); on tankdrive");
     if (Robot.drivetrain.mode){
       drive.tankDrive(controller.getRawAxis(5)*speed, controller.getRawAxis(1)*speed, false);
