@@ -62,6 +62,7 @@ public class DriveToHatch extends Command {
     SmartDashboard.putNumber("LimelightArea", limelightdata[2]);
     System.out.println("Executing DriveToHatch");
     SmartDashboard.putNumber("Distance to target", Robot.limelight.getDistance());
+    SmartDashboard.putNumber("Target Angle", Robot.limelight.getAngle());
   }
 
   private boolean isTargetVisible(double[] data) {
