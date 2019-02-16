@@ -30,13 +30,12 @@ public class TDrive extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
+    
     // System.out.println("execute(); on tankdrive");
     if (Robot.drivetrain.mode){
       drive.tankDrive(controller.getRawAxis(5)*speed, controller.getRawAxis(1)*speed, false);
-    } else if (!Robot.drivetrain.mode){
-      drive.arcadeDrive(controller.getRawAxis(1)*speed, controller.getRawAxis(0)*speed, false);
     } else {
-      System.out.println("Driving mode not selected!!!!!!! FIX THIS IMMEDIATELY!!!!!");
+      drive.arcadeDrive(controller.getRawAxis(1)*speed, controller.getRawAxis(0)*speed*.5, false);
     }
   }
 

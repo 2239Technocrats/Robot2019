@@ -13,6 +13,7 @@ import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import frc.robot.subsystems.Drivetrain;
+import edu.wpi.first.wpilibj.buttons.POVButton;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -37,7 +38,7 @@ public class OI {
   public int speed;
   public OI (Drivetrain drivetrain) {
     drive = drivetrain.getDrive();
-    // b1.whileHeld(new TurnToBall());
+    b1.whileHeld(new TurnToBall());
     b2.whileHeld(new DriveToHatch());
     b5.whenPressed(new ToggleHatchManipulator());
     b6.whenPressed(new ToggleHatchManipulator());
@@ -45,9 +46,7 @@ public class OI {
     b8.whenPressed(new ToggleDrivingMode());
 
     //speed controls
-    b1.whenPressed(new SetDriveSpeed(.5));
-    b3.whenPressed(new SetDriveSpeed(.75));
-    b4.whenPressed(new SetDriveSpeed(1.0));
+    
   }
 
   public XboxController getXboxController(){
