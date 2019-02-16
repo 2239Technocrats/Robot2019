@@ -31,6 +31,7 @@ public class TDrive extends Command {
   @Override
   protected void execute() {
     speed = Robot.drivetrain.speed;
+    System.out.println(speed);
     // System.out.println("execute(); on tankdrive");
     if (Robot.drivetrain.mode){
       drive.tankDrive(controller.getRawAxis(5)*speed, controller.getRawAxis(1)*speed, false);

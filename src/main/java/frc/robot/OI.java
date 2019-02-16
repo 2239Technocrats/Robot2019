@@ -34,7 +34,7 @@ public class OI {
   JoystickButton b10 = new JoystickButton(controller, 10);
   JoystickButton b11 = new JoystickButton(controller, 11);
   JoystickButton b12 = new JoystickButton(controller, 12);
-  POVButton up = new POVButton(controller, 360);
+  POVButton up = new POVButton(controller, 0);
   POVButton upLeft = new POVButton(controller, 45);
   POVButton left = new POVButton(controller, 90);
   POVButton downLeft = new POVButton(controller, 135);
