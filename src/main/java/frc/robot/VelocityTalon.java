@@ -10,6 +10,14 @@ public class VelocityTalon extends WPI_TalonSRX{
 
     @Override
     public void set(double value){
-        super.set(ControlMode.PercentOutput, value);
+        super.set(ControlMode.Velocity, value);
+    }
+
+    /**
+     * 
+     * @param velocity the velocity 
+     */
+    public void vSet(double velocity){
+
     }
 }
