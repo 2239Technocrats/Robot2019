@@ -46,7 +46,7 @@ public class Limelight extends Subsystem {
 
     public double getAngle(){
         double phi = Math.sqrt(ta.getDouble(0.0)*DIMENSION_RATIO);
-        return Math.PI-Math.asin(2*this.getDistance()*Math.sin(phi/2))-phi;
+        return Math.PI-Math.asin(2*this.getDistance()*Math.sin(phi/2))-phi; 
 
     }    
 //l/sin(180-phi-theta)=d/2sin(phi/2)
