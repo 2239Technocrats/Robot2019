@@ -47,7 +47,7 @@ public class DriveToHatch extends Command {
         //drive.tankDrive(FORWARD_SPEED, FORWARD_SPEED*(-1+percentError));
         SmartDashboard.putNumber("DriveLeft", FORWARD_SPEED);
         SmartDashboard.putNumber("DriveRight", FORWARD_SPEED*(1-percentError));
-      }else{
+      }else{ 
         //drive.tankDrive(FORWARD_SPEED*(1-percentError), FORWARD_SPEED);
         SmartDashboard.putNumber("DriveLeft", FORWARD_SPEED*(1-percentError));
         SmartDashboard.putNumber("DriveRight", FORWARD_SPEED);

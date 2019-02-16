@@ -26,10 +26,12 @@ public class Limelight extends Subsystem {
     NetworkTableEntry tx;
     NetworkTableEntry ty;
     NetworkTableEntry ta;
+
     NetworkTableEntry width;
-    public static final double CAMERA_HEIGHT;
-    public static final double TAPE_HEIGHT;
-    public static final double DIMENSION_RATIO;
+    public static final double CAMERA_HEIGHT = 24.5;
+    public static final double TAPE_HEIGHT = 29;
+    public static final double HALF_TAPE_WIDTH =5;
+    public static final double DIMENSION_RATIO=2.541;
     // Drivetrain public objects
     public Limelight() {
         table = NetworkTableInstance.getDefault().getTable("limelight");
@@ -43,13 +45,16 @@ public class Limelight extends Subsystem {
     }
 
     public double getAngle(){
-        return Math.pi()-Math.()
-    }    
+        double phi = Math.sqrt(ta.getDouble(0.0)*DIMENSION_RATIO);
+        return Math.PI-Math.asin(2*this.getDistance()*Math.sin(phi/2))-phi;
 
+    }    
+//l/sin(180-phi-theta)=d/2sin(phi/2)
 
     public double getDistance(){
         double heightdifference = CAMERA_HEIGHT-TAPE_HEIGHT;
-        return heightdifference/Math.atan(ty.getDouble(0.0));
+        return heightdifference/Math.tan(Math.toRadians(ty.getDouble(0.0)));
+        
     }
 
     @Override
