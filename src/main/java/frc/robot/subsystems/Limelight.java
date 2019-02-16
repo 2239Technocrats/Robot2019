@@ -48,10 +48,8 @@ public class Limelight extends Subsystem {
         double phi = Math.sqrt(Math.toRadians(ta.getDouble(0.0))*DIMENSION_RATIO);
         double l = this.getDistance();
         double d = this.HALF_TAPE_WIDTH;
-        return Math.PI-Math.asin(2*l*Math.sin(2*l*Math.sin(phi/2)/d)); 
-
+        return Math.PI-Math.asin(2*l*Math.sin(2*l*Math.sin(phi/2)/d));  
     }    
-//l/sin(180-phi-theta)=d/2sin(phi/2)
 
     public double getDistance(){
         double heightdifference = CAMERA_HEIGHT-TAPE_HEIGHT;
