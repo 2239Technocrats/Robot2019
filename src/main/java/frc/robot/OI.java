@@ -34,6 +34,14 @@ public class OI {
   JoystickButton b10 = new JoystickButton(controller, 10);
   JoystickButton b11 = new JoystickButton(controller, 11);
   JoystickButton b12 = new JoystickButton(controller, 12);
+  POVButton up = new POVButton(controller, 360);
+  POVButton upLeft = new POVButton(controller, 45);
+  POVButton left = new POVButton(controller, 90);
+  POVButton downLeft = new POVButton(controller, 135);
+  POVButton down = new POVButton(controller, 180);
+  POVButton downRight = new POVButton(controller, 225);
+  POVButton right = new POVButton(controller, 270);
+  POVButton upRight = new POVButton(controller, 315);
   DifferentialDrive drive;
   public int speed;
   public OI (Drivetrain drivetrain) {
@@ -46,7 +54,10 @@ public class OI {
     b8.whenPressed(new ToggleDrivingMode());
 
     //speed controls
-    
+    up.whenPressed(new SetDriveSpeed(1.0));
+    left.whenPressed(new SetDriveSpeed(.75));
+    down.whenPressed(new SetDriveSpeed(.5));
+    right.whenPressed(new SetDriveSpeed(.25));
   }
 
   public XboxController getXboxController(){
