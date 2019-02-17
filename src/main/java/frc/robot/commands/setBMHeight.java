@@ -23,8 +23,7 @@ public class setBMHeight extends Command{
 
     @Override
     protected void execute() {
-        //Robot.ballLiftLeft.getLeft().set(com.ctre.phoenix.motorcontrol.ControlMode.MotionMagic,this.position);
-        //Robot.ballLiftRight.getRight().set(com.ctre.phoenix.motorcontrol.ControlMode.MotionMagic,this.position);
+        //Robot.ballLiftLeft.left.set(com.ctre.phoenix.motorcontrol.ControlMode.MotionMagic,this.position);
         SmartDashboard.putNumber("Left Encoder",Robot.ballLiftLeft.getLeft().getSensorCollection().getAnalogInRaw());
         SmartDashboard.putNumber("Right Encoder",Robot.ballLiftRight.getRight().getSensorCollection().getAnalogInRaw());
     }

@@ -32,6 +32,7 @@ public class BallLiftLeft extends PIDSubsystem{
         LiveWindow.add(getPIDController());
         getPIDController().setInputRange(0.0, 90.0);
         getPIDController().setOutputRange(-1.0, 1.0);
+        right.set(com.ctre.phoenix.motorcontrol.ControlMode.Follower,5);
         position = 0;
     }
 
