@@ -15,7 +15,7 @@ import frc.robot.Robot;
 import frc.robot.commands.setBMHeight;
 
 
-public class BallLift extends PIDSubsystem{
+public class BallLiftLeft extends PIDSubsystem{
 
     int position;
 
@@ -24,22 +24,24 @@ public class BallLift extends PIDSubsystem{
     SensorCollection lSensors = left.getSensorCollection();
     SensorCollection rSensors = right.getSensorCollection();
 
-    public BallLift(){
-        super("BallLiftPID", 0.7, 0.0, 0.0);
+    public BallLiftLeft(){
+        super("BallLiftLeftPID", 0.7, 0.0, 0.0);
         setAbsoluteTolerance(1.0);
         getPIDController().setContinuous(false);
-        getPIDController().setName("PIDSubsystem1", "PIDSubsystemController");
+        getPIDController().setName("PIDSubsystem1", "PIDSubsystemControllerLeft");
         LiveWindow.add(getPIDController());
         getPIDController().setInputRange(0.0, 90.0);
         getPIDController().setOutputRange(-1.0, 1.0);
         position = 0;
     }
 
-    public void initDefaultCommand(){}
+    public void initDefaultCommand(){
+        //TODO
+    }
 
     public double returnPIDInput(){
         //TODO adapt to the actual inputs given from the range of motion of boxy boi
-        return (lSensors.getAnalogInRaw()+rSensors.getAnalogInRaw())/2;
+        return (lSensors.getAnalogInRaw());
     }
 
     public void usePIDOutput(double output){

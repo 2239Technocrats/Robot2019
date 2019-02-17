@@ -20,6 +20,8 @@ import frc.robot.commands.setBMHeight;
 import frc.robot.subsystems.Pixy;
 import frc.robot.subsystems.Limelight;
 import frc.robot.subsystems.HatchManipulator;
+import frc.robot.subsystems.BallLiftLeft;
+import frc.robot.subsystems.BallLiftRight;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -35,6 +37,8 @@ public class Robot extends TimedRobot {
   //public static Arduino arduino = new Arduino();
   public static Pixy pixy = new Pixy();
   public static OI oi;
+  public static BallLiftRight ballLiftRight = new BallLiftRight();
+  public static BallLiftLeft ballLiftLeft = new BallLiftLeft();
 
   Command m_autonomousCommand;
   SendableChooser<Command> m_chooser = new SendableChooser<>();

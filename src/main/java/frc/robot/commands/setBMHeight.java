@@ -2,14 +2,16 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+import frc.robot.Robot;
 
 public class setBMHeight extends Command{
 
     private int position;
-    private boolean finished;
 
     public setBMHeight(int position){
         this.position = position;
+        requires(Robot.ballLiftLeft);
+        requires(Robot.ballLiftRight);
     }
 
     @Override
@@ -19,11 +21,12 @@ public class setBMHeight extends Command{
 
     @Override
     protected void execute() {
-        super.execute();
+        Robot.ballLiftLeft.setSetpoint(this.position);
+        Robot.ballLiftRight.setSetpoint(this.position);
     }
 
     @Override
     protected boolean isFinished(){
-        return finished;
+        return true;
     }
 }
