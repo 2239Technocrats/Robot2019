@@ -3,11 +3,8 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
-import frc.robot.OI;
 import edu.wpi.first.wpilibj.drive.*;
 import edu.wpi.first.wpilibj.XboxController;
-import edu.wpi.first.wpilibj.GenericHID.Hand;
-import java.util.Arrays;
 
 /**
  * An example command.  You can replace me with your own command.

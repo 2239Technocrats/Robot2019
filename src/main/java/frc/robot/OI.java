@@ -20,6 +20,12 @@ import edu.wpi.first.wpilibj.buttons.POVButton;
  * interface to the commands and command groups that allow control of the robot.
  */
 public class OI {
+
+  private final static int GROUND_POSITION = 0;
+  private final static int ROCKET_POSITION = 1;
+  private final static int CARGO_POSITION = 2;
+
+
   XboxController controller = new XboxController(0);
   Joystick testJoystick = new Joystick(1);
   JoystickButton b1 = new JoystickButton(controller, 1);
@@ -34,6 +40,18 @@ public class OI {
   JoystickButton b10 = new JoystickButton(controller, 10);
   JoystickButton b11 = new JoystickButton(controller, 11);
   JoystickButton b12 = new JoystickButton(controller, 12);
+  JoystickButton j1 = new JoystickButton(testJoystick, 1);
+  JoystickButton j2 = new JoystickButton(testJoystick, 2);
+  JoystickButton j3 = new JoystickButton(testJoystick, 3);
+  JoystickButton j4 = new JoystickButton(testJoystick, 4);
+  JoystickButton j5 = new JoystickButton(testJoystick, 5);
+  JoystickButton j6 = new JoystickButton(testJoystick, 6);
+  JoystickButton j7 = new JoystickButton(testJoystick, 7);
+  JoystickButton j8 = new JoystickButton(testJoystick, 8);
+  JoystickButton j9 = new JoystickButton(testJoystick, 9);
+  JoystickButton j10 = new JoystickButton(testJoystick, 10);
+  JoystickButton j11 = new JoystickButton(testJoystick, 11);
+  JoystickButton j12 = new JoystickButton(testJoystick, 12);
   POVButton up = new POVButton(controller, 0);
   POVButton upLeft = new POVButton(controller, 45);
   POVButton left = new POVButton(controller, 90);
@@ -52,6 +70,13 @@ public class OI {
     b6.whenPressed(new ToggleHatchManipulator());
     b7.whenPressed(new ToggleDrivingMode());
     b8.whenPressed(new ToggleDrivingMode());
+
+    j1.whileHeld(new BallWheels(1.0));
+    j2.whileHeld(new BallWheels(-0.5));
+
+    j3.whenPressed(new setBMHeight(GROUND_POSITION));
+    j4.whenPressed(new setBMHeight(CARGO_POSITION));
+    j5.whenPressed(new setBMHeight(ROCKET_POSITION));
 
     //speed controls
     up.whenPressed(new SetDriveSpeed(1.0));

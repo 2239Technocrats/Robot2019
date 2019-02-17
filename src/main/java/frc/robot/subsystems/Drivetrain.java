@@ -7,7 +7,6 @@
 
 package frc.robot.subsystems;
 
-import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 // Subsystem system
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -16,7 +15,6 @@ import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
-import edu.wpi.first.wpilibj.drive.MecanumDrive;
 import frc.robot.VelocityTalon;
 // Commands
 import frc.robot.commands.TDrive;
@@ -32,16 +30,16 @@ public class Drivetrain extends Subsystem {
   public boolean mode = true;
   public double speed = .75;
 
-  WPI_TalonSRX leftMotorM;
-  WPI_VictorSPX leftMotorS;
-  WPI_TalonSRX rightMotorM;
-  WPI_VictorSPX rightMotorS;
-  WPI_TalonSRX leftLift;
-  WPI_TalonSRX rightLift;
-  SpeedControllerGroup left;
-  SpeedControllerGroup right;
-  SpeedControllerGroup lift;
-  DifferentialDrive drive;
+  public WPI_TalonSRX leftMotorM;
+  public WPI_VictorSPX leftMotorS;
+  public WPI_TalonSRX rightMotorM;
+  public WPI_VictorSPX rightMotorS;
+  public WPI_TalonSRX leftLift;
+  public WPI_TalonSRX rightLift;
+  public SpeedControllerGroup left;
+  public SpeedControllerGroup right;
+  public SpeedControllerGroup lift;
+  public DifferentialDrive drive;
 
 
   // Drivetrain public objects
