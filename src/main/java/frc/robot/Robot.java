@@ -22,6 +22,7 @@ import frc.robot.subsystems.Limelight;
 import frc.robot.subsystems.HatchManipulator;
 import frc.robot.subsystems.BallLiftLeft;
 import frc.robot.subsystems.BallLiftRight;
+import frc.robot.subsystems.BallManipulator;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -39,6 +40,7 @@ public class Robot extends TimedRobot {
   public static OI oi;
   public static BallLiftRight ballLiftRight = new BallLiftRight();
   public static BallLiftLeft ballLiftLeft = new BallLiftLeft();
+  public static BallManipulator ballManipulator = new BallManipulator();
 
   Command m_autonomousCommand;
   SendableChooser<Command> m_chooser = new SendableChooser<>();
