@@ -7,8 +7,6 @@ import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
 
-import frc.robot.commands.BallWheels;
-
 public class BallManipulator extends Subsystem{
 
     public WPI_TalonSRX wheels = new WPI_TalonSRX(7);
@@ -23,7 +21,7 @@ public class BallManipulator extends Subsystem{
     }
 
     public void setSpeed(double speed){
-        new BallWheels(speed);
+        wheels.set(speed);
     }
 
 }

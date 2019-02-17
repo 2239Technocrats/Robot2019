@@ -13,7 +13,7 @@ public class BallWheels extends Command{
     }
 
     protected void execute(){
-        Robot.ballManipulator.wheels.set(speed);
+        Robot.ballManipulator.setSpeed(speed);
     }
 
     @Override
