@@ -36,7 +36,7 @@ public class TDrive extends Command {
     if (Robot.drivetrain.mode){
       drive.tankDrive(controller.getRawAxis(5)*speed, controller.getRawAxis(1)*speed, false);
     } else {
-      drive.arcadeDrive(controller.getRawAxis(1)*speed, controller.getRawAxis(0)*speed*.5, false);
+      drive.arcadeDrive(controller.getRawAxis(1)*speed, controller.getRawAxis(0)*speed, false);
     }
   }
 
