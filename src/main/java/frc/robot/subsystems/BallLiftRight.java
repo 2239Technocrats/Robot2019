@@ -48,6 +48,10 @@ public class BallLiftRight extends PIDSubsystem{
         right.pidWrite(output);
     }
 
+    public WPI_TalonSRX getRight(){
+        return right;
+    }
+
     public void setHeight(int position){
         //0 for bottom
         //1 for rocket height

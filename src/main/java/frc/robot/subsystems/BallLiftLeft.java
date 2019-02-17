@@ -19,8 +19,8 @@ public class BallLiftLeft extends PIDSubsystem{
 
     int position;
 
-    WPI_TalonSRX left = Robot.drivetrain.leftLift;
-    WPI_TalonSRX right = Robot.drivetrain.rightLift;
+    public WPI_TalonSRX left = Robot.drivetrain.leftLift;
+    public WPI_TalonSRX right = Robot.drivetrain.rightLift;
     SensorCollection lSensors = left.getSensorCollection();
     SensorCollection rSensors = right.getSensorCollection();
 
@@ -45,7 +45,15 @@ public class BallLiftLeft extends PIDSubsystem{
     }
 
     public void usePIDOutput(double output){
-        
+        left.pidWrite(output);
+    }
+    
+    public WPI_TalonSRX getLeft(){
+        return left;
+    }
+
+    public WPI_TalonSRX getRight(){
+        return right;
     }
 
     public void setHeight(int position){
