@@ -15,35 +15,28 @@ import frc.robot.Robot;
 import frc.robot.commands.setBMHeight;
 
 
-public class BallLiftLeft extends PIDSubsystem{
+public class BallLift extends Subsystem{
 
     int position;
 
-    public WPI_TalonSRX left = Robot.drivetrain.leftLift;
-    public WPI_TalonSRX right = Robot.drivetrain.rightLift;
-    SensorCollection lSensors = left.getSensorCollection();
-    SensorCollection rSensors = right.getSensorCollection();
+    public WPI_TalonSRX left;
+    public WPI_TalonSRX right;
+    public SpeedControllerGroup lift;
 
-    public BallLiftLeft(){
-        super("BallLiftLeftPID", 0.7, 0.0, 0.0);
-        setAbsoluteTolerance(1.0);
-        getPIDController().setContinuous(false);
-        getPIDController().setName("PIDSubsystem1", "PIDSubsystemControllerLeft");
-        LiveWindow.add(getPIDController());
-        getPIDController().setInputRange(0.0, 90.0);
-        getPIDController().setOutputRange(-1.0, 1.0);
-        right.set(com.ctre.phoenix.motorcontrol.ControlMode.Follower,5);
-        position = 0;
+    public BallLift(){
+        //right.set(com.ctre.phoenix.motorcontrol.ControlMode.Follower,5);
+
+        left = new WPI_TalonSRX(5);
+        right = new WPI_TalonSRX(6);
+        left.setExpiration(0.5);
+        right.setExpiration(0.5);
+        lift = new SpeedControllerGroup(left, right);
     }
 
     public void initDefaultCommand(){
-        //TODO
+        //setDefaultCommand(new setBMHeight(0));
     }
 
-    public double returnPIDInput(){
-        //TODO adapt to the actual inputs given from the range of motion of boxy boi
-        return (lSensors.getAnalogInRaw());
-    }
 
     public void usePIDOutput(double output){
         left.pidWrite(output);

@@ -3,15 +3,14 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj.command.Command;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import frc.robot.subsystems.BallLift;
 
 import frc.robot.Robot;
 
-public class setBMHeight extends Command{
+public class SetBMSpeed extends Command{
 
     private int position;
 
-    public setBMHeight(int position){
+    public SetBMSpeed(double speed){
         this.position = position;
         requires(Robot.ballLift);
         requires(Robot.drivetrain);

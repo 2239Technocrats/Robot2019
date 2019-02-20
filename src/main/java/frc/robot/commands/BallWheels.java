@@ -10,10 +10,12 @@ public class BallWheels extends Command{
 
     public BallWheels(double speed){
         this.speed = speed;
+        requires(Robot.ballManipulator);
     }
 
     protected void execute(){
         Robot.ballManipulator.setSpeed(speed);
+        System.out.println("BallWheels are being set to:" + speed);
     }
 
     @Override

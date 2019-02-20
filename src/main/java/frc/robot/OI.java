@@ -60,6 +60,16 @@ public class OI {
   POVButton downRight = new POVButton(controller, 225);
   POVButton right = new POVButton(controller, 270);
   POVButton upRight = new POVButton(controller, 315);
+
+  POVButton up2 = new POVButton(testJoystick, 0);
+  POVButton uL2 = new POVButton(testJoystick, 45);
+  POVButton left2 = new POVButton(testJoystick, 90);
+  POVButton dL2 = new POVButton(testJoystick, 135);
+  POVButton down2 = new POVButton(testJoystick, 180);
+  POVButton dR2 = new POVButton(testJoystick, 225);
+  POVButton right2 = new POVButton(testJoystick, 270);
+  POVButton uR2 = new POVButton(testJoystick, 315);
+
   DifferentialDrive drive;
   public int speed;
   public OI (Drivetrain drivetrain) {
@@ -71,22 +81,29 @@ public class OI {
     b7.whenPressed(new ToggleDrivingMode());
     b8.whenPressed(new ToggleDrivingMode());
 
-    j1.whileHeld(new BallWheels(1.0));
-    j2.whileHeld(new BallWheels(-0.5));
+    j1.whileHeld(new BallWheels(1));
+    j2.whileHeld(new BallWheels(-1));
 
-    j3.whenPressed(new setBMHeight(GROUND_POSITION));
-    j4.whenPressed(new setBMHeight(CARGO_POSITION));
-    j5.whenPressed(new setBMHeight(ROCKET_POSITION));
+    // j3.whenPressed(new setBMHeight(GROUND_POSITION));
+    // j4.whenPressed(new setBMHeight(CARGO_POSITION));
+    // j5.whenPressed(new setBMHeight(ROCKET_POSITION));
+
+    j3.whileHeld(new SetBMSpeed(testJoystick.getRawAxis(1)));
 
     //speed controls
     up.whenPressed(new SetDriveSpeed(1.0));
     left.whenPressed(new SetDriveSpeed(.75));
     down.whenPressed(new SetDriveSpeed(.5));
     right.whenPressed(new SetDriveSpeed(.25));
+
   }
 
   public XboxController getXboxController(){
     return controller;
+  }
+
+  public Joystick getJoystick(){
+    return testJoystick;
   }
 
   public int getSpeed(){

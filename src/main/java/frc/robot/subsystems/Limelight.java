@@ -9,7 +9,7 @@ import edu.wpi.first.networktables.*;
 
 public class Limelight extends Subsystem {
     // Put methods for controlling this subsystem
-    // here. Call these from Commands.
+    // here. Ca ..ll these from Commands.
     NetworkTable table;
     NetworkTableEntry tx;
     NetworkTableEntry ty;

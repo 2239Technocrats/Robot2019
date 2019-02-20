@@ -19,7 +19,7 @@ public class TurnToBall extends Command {
   *
   */
 
-  private static final double BASE_FORWARD_POWER = -0.7;
+  private static final double BASE_FORWARD_POWER = 0.7;
   public static final double TURN_SPEED = 0.1;
     DifferentialDrive drive;
     XboxController testXbox;
@@ -44,16 +44,11 @@ public class TurnToBall extends Command {
       double turnPower;
       double location = Robot.pixy.getBallLocation();
 
-      if(isBallOnRight(location)) {
-        distanceFromMidpoint = Robot.pixy.getBallLocation()-PIXY_MIDPOINT;
-        turnPower = TURN_SPEED*Math.pow(distanceFromMidpoint,3)/PIXY_MIDPOINT;
 
-      } else {
-        distanceFromMidpoint = PIXY_MIDPOINT-Robot.pixy.getBallLocation();
-        turnPower = -TURN_SPEED*Math.pow(distanceFromMidpoint,3)/PIXY_MIDPOINT;
-      }
-       drive.tankDrive(-BASE_FORWARD_POWER+turnPower, 
-                       -BASE_FORWARD_POWER-turnPower);
+      distanceFromMidpoint = Robot.pixy.getBallLocation()-PIXY_MIDPOINT;
+      turnPower = TURN_SPEED*Math.pow(distanceFromMidpoint,3)/PIXY_MIDPOINT;
+      drive.tankDrive(-BASE_FORWARD_POWER-turnPower, 
+                       -BASE_FORWARD_POWER+turnPower);
       //511drive.tankDrive(0, 0);
       System.out.println(String.format("Location: %f\tOffset: %f\tTurn Power: %f", Robot.pixy.getBallLocation(), distanceFromMidpoint, turnPower));
     } else {

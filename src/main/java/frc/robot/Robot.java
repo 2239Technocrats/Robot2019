@@ -13,17 +13,8 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 // import frc.robot.commands.ExampleCommand;
-import frc.robot.subsystems.Drivetrain;
-import frc.robot.subsystems.Arduino;
-import frc.robot.commands.TDrive;
-import frc.robot.commands.setBMHeight;
-import frc.robot.subsystems.Pixy;
-import frc.robot.subsystems.Limelight;
-import frc.robot.subsystems.HatchManipulator;
-import frc.robot.subsystems.BallLiftLeft;
-import frc.robot.subsystems.BallLiftRight;
-import frc.robot.subsystems.BallManipulator;
-
+import frc.robot.subsystems.*;
+import frc.robot.commands.*;
 /**
  * The VM is configured to automatically run this class, and to call the
  * functions corresponding to each mode, as described in the TimedRobot
@@ -38,8 +29,7 @@ public class Robot extends TimedRobot {
   //public static Arduino arduino = new Arduino();
   public static Pixy pixy = new Pixy();
   public static OI oi;
-  public static BallLiftRight ballLiftRight = new BallLiftRight();
-  public static BallLiftLeft ballLiftLeft = new BallLiftLeft();
+  public static BallLift ballLift = new BallLift();
   public static BallManipulator ballManipulator = new BallManipulator();
 
   Command m_autonomousCommand;
@@ -99,6 +89,7 @@ public class Robot extends TimedRobot {
   @Override
   public void autonomousInit() {
     m_autonomousCommand = m_chooser.getSelected();
+    teleopPeriodic();
 
     /*
      * String autoSelected = SmartDashboard.getString("Auto Selector",

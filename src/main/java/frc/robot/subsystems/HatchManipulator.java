@@ -12,7 +12,7 @@ public class HatchManipulator extends Subsystem {
     public HatchManipulator(){
         solenoid = new Solenoid(0);
     }
-
+ 
     public void initDefaultCommand(){
 
     }

@@ -29,17 +29,14 @@ public class Drivetrain extends Subsystem {
 
   public boolean mode = true;
   public double speed = .75;
-
+  public int controller = 0;
   public WPI_TalonSRX leftMotorM;
   public WPI_VictorSPX leftMotorS;
   public WPI_TalonSRX rightMotorM;
   public WPI_VictorSPX rightMotorS;
-  public WPI_TalonSRX leftLift;
-  public WPI_TalonSRX rightLift;
+  public DifferentialDrive drive;
   public SpeedControllerGroup left;
   public SpeedControllerGroup right;
-  public SpeedControllerGroup lift;
-  public DifferentialDrive drive;
 
 
   // Drivetrain public objects
@@ -48,18 +45,19 @@ public class Drivetrain extends Subsystem {
     leftMotorS = new WPI_VictorSPX(2);
     rightMotorM = new WPI_TalonSRX(3);
     rightMotorS = new WPI_VictorSPX(4);
-    leftLift = new WPI_TalonSRX(5);
-    rightLift = new WPI_TalonSRX(6);
+    right = new SpeedControllerGroup(rightMotorM, rightMotorS);
+    left = new SpeedControllerGroup(leftMotorM, leftMotorS);
+
+
     leftMotorM.setExpiration(0.5);
     leftMotorS.setExpiration(0.5);
     rightMotorM.setExpiration(0.5);
     rightMotorS.setExpiration(0.5);
-    leftLift.setExpiration(0.5);
-    rightLift.setExpiration(0.5);
-    left = new SpeedControllerGroup(leftMotorM, leftMotorS);
-    right = new SpeedControllerGroup(rightMotorM, rightMotorS);
-    lift = new SpeedControllerGroup(leftLift, rightLift);
-    drive = new DifferentialDrive(left, right);
+
+
+
+
+    drive = new DifferentialDrive(right, left);
 
     
   }
@@ -81,6 +79,10 @@ public class Drivetrain extends Subsystem {
   public void setMode(boolean mode){
     this.mode = mode;
   }
+
+  public void setController(int id){
+    this.controller = id;
+  } 
 
   public void setSpeed(double speed){
     this.speed = speed;
