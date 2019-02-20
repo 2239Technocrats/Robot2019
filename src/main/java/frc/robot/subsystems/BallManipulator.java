@@ -6,6 +6,7 @@ package frc.robot.subsystems;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
+import frc.robot.commands.BallWheels;
 
 public class BallManipulator extends Subsystem{
 
@@ -17,7 +18,7 @@ public class BallManipulator extends Subsystem{
 
     @Override
     protected void initDefaultCommand(){
-        
+        setDefaultCommand(new BallWheels(0));
     }
 
     public void setSpeed(double speed){

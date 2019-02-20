@@ -23,7 +23,8 @@ public class SetBMSpeed extends Command{
 
     @Override
     protected void execute() {
-        Robot.ballLift.lift.set(Robot.oi.getJoystick().getRawAxis(1));
+        Robot.ballLift.left.set(Robot.oi.getJoystick().getRawAxis(1));
+        Robot.ballLift.right.set(-Robot.oi.getJoystick().getRawAxis(1));
         System.out.println("Executing setBMHeight, setting at "+ Robot.oi.getJoystick().getRawAxis(1));
     }
 
