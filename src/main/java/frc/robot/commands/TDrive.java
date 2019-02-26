@@ -16,6 +16,7 @@ public class TDrive extends Command {
     DifferentialDrive drive;
     XboxController controller;
     Joystick joystick;
+    boolean flipped;
     public double speed = Robot.drivetrain.speed;
   public TDrive() {
     // Use requires() here to declare subsystem dependencies
@@ -28,6 +29,7 @@ public class TDrive extends Command {
       drive = Robot.drivetrain.getDrive();
       controller = Robot.oi.getXboxController();
       joystick = Robot.oi.getJoystick();
+      flipped = Robot.drivetrain.isFlipped();
   }
 
   // Called repeatedly when this Command is scheduled to run
@@ -40,9 +42,19 @@ public class TDrive extends Command {
       drive.tankDrive(-1*controller.getRawAxis(1)*speed, -1*controller.getRawAxis(5)*speed, false);
     } else {
       if (Robot.drivetrain.controller == 0){
-        drive.arcadeDrive(-1*controller.getRawAxis(1)*speed, -1*controller.getRawAxis(0)*speed, false);
+        if(flipped){
+          drive.arcadeDrive(-1*controller.getRawAxis(1)*speed, -1*controller.getRawAxis(0)*speed, false);
+        }
+        else{
+          drive.arcadeDrive(controller.getRawAxis(0)*speed, controller.getRawAxis(1)*speed, false);
+        }
       } else{
-        drive.arcadeDrive(-1*controller.getRawAxis(1)*speed, -1*controller.getRawAxis(2)*speed, false);
+        if(flipped){
+          drive.arcadeDrive(-1*controller.getRawAxis(1)*speed, controller.getRawAxis(4)*speed, false);
+        }
+        else{
+          drive.arcadeDrive(controller.getRawAxis(1)*speed, -1*controller.getRawAxis(4)*speed, false);
+        }
       }
       
     }
@@ -54,7 +66,7 @@ public class TDrive extends Command {
     // System.out.println("isFinished(); on exampleCommand")
     return false;
   }
-
+     
   // Called once after isFinished returns true
   @Override
   protected void end() {

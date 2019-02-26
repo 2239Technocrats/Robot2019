@@ -34,7 +34,7 @@ public class BallLift extends Subsystem{
     }
 
     public void initDefaultCommand(){
-        setDefaultCommand(new setBMHeight(0));
+        //setDefaultCommand(new setBMHeight(0));
     }
 
 

@@ -30,10 +30,13 @@ public class Drivetrain extends Subsystem {
   public boolean mode = true;
   public double speed = .75;
   public int controller = 0;
+  public boolean flipped = false;
   public WPI_TalonSRX leftMotorM;
-  public WPI_VictorSPX leftMotorS;
+  // public WPI_VictorSPX leftMotorS;
+  public WPI_TalonSRX leftMotorS;
   public WPI_TalonSRX rightMotorM;
-  public WPI_VictorSPX rightMotorS;
+  // public WPI_VictorSPX rightMotorS;
+  public WPI_TalonSRX rightMotorS;
   public DifferentialDrive drive;
   public SpeedControllerGroup left;
   public SpeedControllerGroup right;
@@ -42,17 +45,19 @@ public class Drivetrain extends Subsystem {
   // Drivetrain public objects
   public Drivetrain () {
     leftMotorM = new WPI_TalonSRX(1);
-    leftMotorS = new WPI_VictorSPX(2);
+    // leftMotorS = new WPI_VictorSPX(2);
+    leftMotorS = new WPI_TalonSRX(2);
     rightMotorM = new WPI_TalonSRX(3);
-    rightMotorS = new WPI_VictorSPX(4);
-    right = new SpeedControllerGroup(rightMotorM, rightMotorS);
-    left = new SpeedControllerGroup(leftMotorM, leftMotorS);
-
+    // rightMotorS = new WPI_VictorSPX(4);
+    rightMotorS = new WPI_TalonSRX(4);
 
     leftMotorM.setExpiration(0.5);
     leftMotorS.setExpiration(0.5);
     rightMotorM.setExpiration(0.5);
     rightMotorS.setExpiration(0.5);
+
+    right = new SpeedControllerGroup(rightMotorM, rightMotorS);
+    left = new SpeedControllerGroup(leftMotorM, leftMotorS);
 
 
 
@@ -90,5 +95,18 @@ public class Drivetrain extends Subsystem {
 
   public double getSpeed(){
     return speed;
+  }
+
+  /**
+   * flips drive direction
+   * 
+   * @param state true for cargo forward, false for hatch forward.
+   */
+  public void setFlipped(boolean state){
+    flipped = state;
+  }
+
+  public boolean isFlipped(){
+    return flipped;
   }
 }
