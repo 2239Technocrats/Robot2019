@@ -81,6 +81,9 @@ public class OI {
     b7.whenPressed(new ToggleDrivingMode());
     b8.whenPressed(new ToggleDrivingMode());
 
+    b11.whenPressed(new FlipDrive());
+    b12.whenPressed(new FlipDrive());
+
     j1.whileHeld(new BallWheels(1));
     j2.whileHeld(new BallWheels(-1));
 

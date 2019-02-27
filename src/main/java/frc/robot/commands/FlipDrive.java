@@ -8,8 +8,13 @@ public class FlipDrive extends Command{
 
     private boolean flipped;
 
-    public FlipDrive(boolean state){
-        flipped = state;
+    public FlipDrive(){
+        if(Robot.drivetrain.isFlipped()){
+            flipped = false;
+        }
+        else{
+            flipped = true;
+        }
     }
 
     @Override
