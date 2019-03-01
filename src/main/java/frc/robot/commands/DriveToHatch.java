@@ -18,7 +18,7 @@ public class DriveToHatch extends Command {
      *
      */
 
-    public static final double FORWARD_SPEED = -0.7;
+    public double FORWARD_SPEED = -0.7;
     public static final double TURN_SPEED = 0.01;
     DifferentialDrive drive;
     XboxController testXbox;
@@ -37,6 +37,7 @@ public class DriveToHatch extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute(){
+    FORWARD_SPEED = -Robot.drivetrain.speed;
     double[] limelightdata = Robot.limelight.getTapeLocation();
     //System.out.println(String.format("Limelight X: %f", limelightdata[0]));
 
