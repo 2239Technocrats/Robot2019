@@ -56,15 +56,7 @@ public class Drivetrain extends Subsystem {
     leftMotorS.setExpiration(0.5);
     rightMotorM.setExpiration(0.5);
     rightMotorS.setExpiration(0.5);
-<<<<<<< HEAD
-
-=======
-    leftLift.setExpiration(0.5);
-    rightLift.setExpiration(0.5);
-    leftMotorS.setControlMode(ControlMode.Follower,1);
-    rightMotorS.setControlMode(ControlMode.Follower,3);
     left = new SpeedControllerGroup(leftMotorM, leftMotorS);
->>>>>>> 822292c... start motion profile code
     right = new SpeedControllerGroup(rightMotorM, rightMotorS);
     left = new SpeedControllerGroup(leftMotorM, leftMotorS);
 

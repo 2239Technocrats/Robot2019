@@ -25,7 +25,7 @@ import frc.robot.commands.*;
 public class Robot extends TimedRobot {
   public static Drivetrain drivetrain = new Drivetrain();
   public static Limelight limelight = new Limelight();
-  public static HatchManipulator hatchManipulator = new HatchManipulator();
+  //public static HatchManipulator hatchManipulator = new HatchManipulator();
   //public static Arduino arduino = new Arduino();
   public static Pixy pixy = new Pixy();
   public static OI oi;

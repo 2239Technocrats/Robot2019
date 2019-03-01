@@ -76,8 +76,8 @@ public class OI {
     drive = drivetrain.getDrive();
     b1.whileHeld(new TurnToBall());
     b2.whileHeld(new DriveToHatch());
-    b5.whenPressed(new ToggleHatchManipulator());
-    b6.whenPressed(new ToggleHatchManipulator());
+    //b5.whenPressed(new ToggleHatchManipulator());
+    //b6.whenPressed(new ToggleHatchManipulator());
     b7.whenPressed(new ToggleDrivingMode());
     b8.whenPressed(new ToggleDrivingMode());
 
