@@ -9,16 +9,17 @@ public class FlipDrive extends Command{
     private boolean flipped;
 
     public FlipDrive(){
+        
+    }
+
+    @Override
+    protected void execute(){
         if(Robot.drivetrain.isFlipped()){
             flipped = false;
         }
         else{
             flipped = true;
         }
-    }
-
-    @Override
-    protected void execute(){
         Robot.drivetrain.setFlipped(flipped);
     }
 

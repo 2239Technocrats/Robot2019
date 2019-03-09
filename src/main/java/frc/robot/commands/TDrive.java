@@ -35,16 +35,17 @@ public class TDrive extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
+    
     speed = Robot.drivetrain.speed;
-    System.out.println(speed);
+    System.out.println(Robot.drivetrain.flipped);
     // System.out.println("execute(); on tankdrive");
-    if(Robot.drivetrain.flipped){
-      drive.tankDrive(-1*controller.getRawAxis(1)*speed, -1*controller.getRawAxis(5)*speed, false);
-    }
-    else if(Robot.drivetrain.flipped){
-      drive.tankDrive(controller.getRawAxis(5)*speed, controller.getRawAxis(1)*speed, false);
+    // if(Robot.drivetrain.flipped){
+    drive.tankDrive(-1*controller.getRawAxis(1)*speed, -1*controller.getRawAxis(5)*speed, false);
+    // }
+    // else if(Robot.drivetrain.flipped){
+    //   drive.tankDrive(controller.getRawAxis(5)*speed, controller.getRawAxis(1)*speed, false);
       
-    }
+    // }
     
   }
 

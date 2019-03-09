@@ -44,14 +44,20 @@ public class DriveToHatch extends Command {
     if (isTargetVisible(limelightdata)) {
       double percentError = limelightdata[0]/25;
       SmartDashboard.putNumber("PercentError", percentError);
-      if(percentError>=0){
-        //drive.tankDrive(FORWARD_SPEED, FORWARD_SPEED*(-1+percentError));
-        SmartDashboard.putNumber("DriveLeft", FORWARD_SPEED);
-        SmartDashboard.putNumber("DriveRight", FORWARD_SPEED*(1-percentError));
+
+      double offset = 1 - Math.abs(percentError);
+      double insideSpeed = FORWARD_SPEED * offset;
+      double outsideSpeed = FORWARD_SPEED;
+
+      SmartDashboard.putNumber("TurnOffset", insideSpeed);
+      if(percentError<=0){
+        drive.tankDrive(-insideSpeed, -outsideSpeed);
+        SmartDashboard.putNumber("DriveLeft", insideSpeed);
+        SmartDashboard.putNumber("DriveRight", outsideSpeed);
       }else{ 
-        //drive.tankDrive(FORWARD_SPEED*(1-percentError), FORWARD_SPEED);
-        SmartDashboard.putNumber("DriveLeft", FORWARD_SPEED*(1-percentError));
-        SmartDashboard.putNumber("DriveRight", FORWARD_SPEED);
+        drive.tankDrive(-outsideSpeed, -insideSpeed);
+        SmartDashboard.putNumber("DriveLeft", outsideSpeed);
+        SmartDashboard.putNumber("DriveRight", insideSpeed);
       }
     } else {
       drive.tankDrive(0,0);
@@ -74,7 +80,7 @@ public class DriveToHatch extends Command {
   @Override
   protected boolean isFinished() {
     // System.out.println("isFinished(); on exampleCommand")
-    return false;
+    return true;
   }
 
   // Called once after isFinished returns true
