@@ -38,26 +38,14 @@ public class TDrive extends Command {
     speed = Robot.drivetrain.speed;
     System.out.println(speed);
     // System.out.println("execute(); on tankdrive");
-    if (Robot.drivetrain.mode){
+    if(Robot.drivetrain.flipped){
       drive.tankDrive(-1*controller.getRawAxis(1)*speed, -1*controller.getRawAxis(5)*speed, false);
-    } else {
-      if (Robot.drivetrain.controller == 0){
-        if(flipped){
-          drive.arcadeDrive(-1*controller.getRawAxis(1)*speed, -1*controller.getRawAxis(0)*speed, false);
-        }
-        else{
-          drive.arcadeDrive(controller.getRawAxis(0)*speed, controller.getRawAxis(1)*speed, false);
-        }
-      } else{
-        if(flipped){
-          drive.arcadeDrive(-1*controller.getRawAxis(1)*speed, controller.getRawAxis(4)*speed, false);
-        }
-        else{
-          drive.arcadeDrive(controller.getRawAxis(1)*speed, -1*controller.getRawAxis(4)*speed, false);
-        }
-      }
+    }
+    else if(Robot.drivetrain.flipped){
+      drive.tankDrive(controller.getRawAxis(5)*speed, controller.getRawAxis(1)*speed, false);
       
     }
+    
   }
 
   // Make this return true when this Command no longer needs to run execute()

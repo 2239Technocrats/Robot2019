@@ -76,11 +76,10 @@ public class OI {
     b2.whileHeld(new DriveToHatch());
     b5.whenPressed(new ToggleHatchManipulator());
     b6.whenPressed(new ToggleHatchManipulator());
-    b7.whenPressed(new ToggleDrivingMode());
-    b8.whenPressed(new ToggleDrivingMode());
-
-    b9.whenPressed(new FlipDrive());
-    b10.whenPressed(new FlipDrive());
+    // b7.whenPressed(new ToggleDrivingMode());
+    // b8.whenPressed(new ToggleDrivingMode());
+    b7.whenPressed(new FlipDrive());
+    b8.whenPressed(new FlipDrive());
 
     j1.whileHeld(new BallWheels(1));
     j2.whileHeld(new BallWheels(-1));
