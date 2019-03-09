@@ -38,8 +38,6 @@ public class OI {
   JoystickButton b8 = new JoystickButton(controller, 8);
   JoystickButton b9 = new JoystickButton(controller, 9);
   JoystickButton b10 = new JoystickButton(controller, 10);
-  JoystickButton b11 = new JoystickButton(controller, 11);
-  JoystickButton b12 = new JoystickButton(controller, 12);
   JoystickButton j1 = new JoystickButton(testJoystick, 1);
   JoystickButton j2 = new JoystickButton(testJoystick, 2);
   JoystickButton j3 = new JoystickButton(testJoystick, 3);
@@ -76,22 +74,24 @@ public class OI {
     drive = drivetrain.getDrive();
     b1.whileHeld(new TurnToBall());
     b2.whileHeld(new DriveToHatch());
-    //b5.whenPressed(new ToggleHatchManipulator());
-    //b6.whenPressed(new ToggleHatchManipulator());
+    b5.whenPressed(new ToggleHatchManipulator());
+    b6.whenPressed(new ToggleHatchManipulator());
     b7.whenPressed(new ToggleDrivingMode());
     b8.whenPressed(new ToggleDrivingMode());
 
-    b11.whenPressed(new FlipDrive());
-    b12.whenPressed(new FlipDrive());
+    b9.whenPressed(new FlipDrive());
+    b10.whenPressed(new FlipDrive());
 
     j1.whileHeld(new BallWheels(1));
     j2.whileHeld(new BallWheels(-1));
 
-    // j3.whenPressed(new setBMHeight(GROUND_POSITION));
+    // j3.whenPressed(new setBMHeight(GROUND_POSITION));]\[]
     // j4.whenPressed(new setBMHeight(CARGO_POSITION));
     // j5.whenPressed(new setBMHeight(ROCKET_POSITION));
 
-    j3.whileHeld(new SetBMSpeed(testJoystick.getRawAxis(1)));
+    j3.whileHeld(new SetBMSpeed(-.25));
+    j4.whenPressed(new SetBMSpeed(0));
+    j5.whileHeld(new SetBMSpeed(.25));
 
     //speed controls
     up.whenPressed(new SetDriveSpeed(1.0));
