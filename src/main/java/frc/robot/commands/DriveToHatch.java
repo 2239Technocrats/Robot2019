@@ -37,20 +37,31 @@ public class DriveToHatch extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute(){
-    FORWARD_SPEED = -Robot.drivetrain.speed;
+    double placeholderValueCuzISuccAtProgramming;
+    //hard coded solution to speed problem cuz i am tired of dealing with the logic
+    if(Robot.drivetrain.speed == .5){
+      placeholderValueCuzISuccAtProgramming = .575;
+    }
+    else if(Robot.drivetrain.speed == .75){
+      placeholderValueCuzISuccAtProgramming = .65;
+    }
+    else{
+      placeholderValueCuzISuccAtProgramming = -Robot.drivetrain.speed;
+    }
+    FORWARD_SPEED = -placeholderValueCuzISuccAtProgramming;
     double[] limelightdata = Robot.limelight.getTapeLocation();
     //System.out.println(String.format("Limelight X: %f", limelightdata[0]));
 
     if (isTargetVisible(limelightdata)) {
-      double percentError = limelightdata[0]/25;
+      double percentError = (limelightdata[0]-1)/25;
       SmartDashboard.putNumber("PercentError", percentError);
 
-      double offset = 1 - Math.abs(percentError);
+      double offset = 1 - Math.abs(percentError)*FORWARD_SPEED;
       double insideSpeed = FORWARD_SPEED * offset;
       double outsideSpeed = FORWARD_SPEED;
 
       SmartDashboard.putNumber("TurnOffset", insideSpeed);
-      if(percentError<=0){
+      if(percentError>=0){
         drive.tankDrive(-insideSpeed, -outsideSpeed);
         SmartDashboard.putNumber("DriveLeft", insideSpeed);
         SmartDashboard.putNumber("DriveRight", outsideSpeed);
