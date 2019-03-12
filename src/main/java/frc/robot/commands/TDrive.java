@@ -29,23 +29,22 @@ public class TDrive extends Command {
       drive = Robot.drivetrain.getDrive();
       controller = Robot.oi.getXboxController();
       joystick = Robot.oi.getJoystick();
-      flipped = Robot.drivetrain.isFlipped();
+      //flipped = Robot.drivetrain.isFlipped();
   }
 
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    
+    flipped = Robot.drivetrain.isFlipped();
     speed = Robot.drivetrain.speed;
     System.out.println(Robot.drivetrain.flipped);
-    // System.out.println("execute(); on tankdrive");
-    // if(Robot.drivetrain.flipped){
+    System.out.println("execute(); on tankdrive");
+    if(Robot.drivetrain.flipped){
     drive.tankDrive(-1*controller.getRawAxis(1)*speed, -1*controller.getRawAxis(5)*speed, false);
-    // }
-    // else if(Robot.drivetrain.flipped){
-    //   drive.tankDrive(controller.getRawAxis(5)*speed, controller.getRawAxis(1)*speed, false);
-      
-    // }
+    }
+    else if(Robot.drivetrain.flipped){
+       drive.tankDrive(controller.getRawAxis(5)*speed, controller.getRawAxis(1)*speed, false);  
+    }
     
   }
 
