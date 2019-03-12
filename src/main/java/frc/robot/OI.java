@@ -84,13 +84,13 @@ public class OI {
     j1.whileHeld(new BallWheels(1));
     j2.whileHeld(new BallWheels(-1));
 
-    // j3.whenPressed(new setBMHeight(GROUND_POSITION));]\[]
-    // j4.whenPressed(new setBMHeight(CARGO_POSITION));
-    // j5.whenPressed(new setBMHeight(ROCKET_POSITION));
+    j3.whenPressed(new setBMHeight(GROUND_POSITION));
+    j4.whenPressed(new setBMHeight(CARGO_POSITION));
+    j5.whenPressed(new setBMHeight(ROCKET_POSITION));
 
-    j3.whileHeld(new SetBMSpeed(-.25));
-    j4.whenPressed(new SetBMSpeed(0));
-    j5.whileHeld(new SetBMSpeed(.25));
+    //j3.whileHeld(new SetBMSpeed(-.25));
+    //j4.whenPressed(new SetBMSpeed(0));
+    //j5.whileHeld(new SetBMSpeed(.25));
 
     //speed controls
     up.whenPressed(new SetDriveSpeed(1.0));

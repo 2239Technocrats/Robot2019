@@ -10,6 +10,8 @@ import frc.robot.Robot;
 public class setBMHeight extends Command{
 
     private int position;
+    WPI_TalonSRX leftlift;
+    WPI_TalonSRX rightlift;
 
     public setBMHeight(int position){
         this.position = position;
@@ -19,17 +21,19 @@ public class setBMHeight extends Command{
 
     @Override
     protected void initialize(){
-
+        leftlift = Robot.Drivetrain.ballLift.getLeft();
+        rightlift = Robot.Drivetrain.ballLift.getRight();
+        rightlift.set(com.ctre.phoenix.motorcontrol.ControlMode.Follower,5);
     }
 
     @Override
     protected void execute() {
-        Robot.ballLift.lift.set(Robot.oi.getJoystick().getRawAxis(1));
+        rightlift.set(com.ctre.pheonix.motorcontrol.ControlMode.MotionMagic,position);
         System.out.println("Executing setBMHeight, setting at "+ Robot.oi.getJoystick().getRawAxis(1));
     }
 
     @Override
     protected boolean isFinished(){
-        return false;
+        return true;
     }
 }
