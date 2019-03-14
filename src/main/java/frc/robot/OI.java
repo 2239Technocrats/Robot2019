@@ -74,12 +74,16 @@ public class OI {
     drive = drivetrain.getDrive();
     b1.whileHeld(new TurnToBall());
     b2.whileHeld(new DriveToHatch());
+    // b5.whenPressed(new HandiDandiCommand1());
     b5.whenPressed(new ToggleHatchManipulator());
     b6.whenPressed(new ToggleHatchManipulator());
     // b7.whenPressed(new ToggleDrivingMode());
     // b8.whenPressed(new ToggleDrivingMode());
     b7.whenPressed(new FlipDrive());
     b8.whenPressed(new FlipDrive());
+
+    b9.whenPressed(new TimeDrive(.1, .8));
+    b10.whenPressed(new TurnAround(1.0, .8));
 
     j1.whileHeld(new BallWheels(1));
     j2.whileHeld(new BallWheels(-1));
