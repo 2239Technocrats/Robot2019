@@ -14,8 +14,14 @@ public class BallWheels extends Command{
     }
 
     protected void execute(){
+        if(Robot.oi.getXboxController().getRawAxis(2) > 0){
+            Robot.ballManipulator.setSpeed(Robot.oi.getXboxController().getRawAxis(2));
+        }else if(Robot.oi.getXboxController().getRawAxis(3) > 0){
+            Robot.ballManipulator.setSpeed(-Robot.oi.getXboxController().getRawAxis(3));
+        }else{
         Robot.ballManipulator.setSpeed(speed);
         System.out.println("BallWheels are being set to:" + speed);
+        }
     }
 
     @Override

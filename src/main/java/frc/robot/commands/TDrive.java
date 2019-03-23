@@ -37,13 +37,13 @@ public class TDrive extends Command {
   protected void execute() {
     flipped = Robot.drivetrain.isFlipped();
     speed = Robot.drivetrain.speed;
-    System.out.println(Robot.drivetrain.flipped);
-    System.out.println("execute(); on tankdrive");
+    // System.out.println(Robot.drivetrain.flipped);
+    // System.out.println("execute(); on tankdrive");
     if(Robot.drivetrain.flipped){
-    drive.tankDrive(-1*controller.getRawAxis(1)*speed, -1*controller.getRawAxis(5)*speed, false);
+      drive.tankDrive(-1*controller.getRawAxis(1)*speed, -1*controller.getRawAxis(5)*speed, false);
     }
-    else if(Robot.drivetrain.flipped){
-       drive.tankDrive(controller.getRawAxis(5)*speed, controller.getRawAxis(1)*speed, false);  
+    else{
+      drive.tankDrive(controller.getRawAxis(5)*speed, controller.getRawAxis(1)*speed, false);  
     }
     
   }

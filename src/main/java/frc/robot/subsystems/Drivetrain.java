@@ -31,7 +31,7 @@ public class Drivetrain extends Subsystem {
   public boolean mode = true;
   public double speed = .75;
   public int controller = 0;
-  public boolean flipped = false;
+  public boolean flipped = true;
   public WPI_TalonSRX leftMotorM;
   // public WPI_VictorSPX leftMotorS;
   public WPI_TalonSRX leftMotorS;

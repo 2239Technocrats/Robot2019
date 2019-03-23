@@ -21,14 +21,14 @@ public class setBMHeight extends Command{
 
     @Override
     protected void initialize(){
-        leftlift = Robot.Drivetrain.ballLift.getLeft();
-        rightlift = Robot.Drivetrain.ballLift.getRight();
+        leftlift = Robot.ballLift.getLeft();
+        rightlift = Robot.ballLift.getRight();
         rightlift.set(com.ctre.phoenix.motorcontrol.ControlMode.Follower,5);
     }
 
     @Override
     protected void execute() {
-        rightlift.set(com.ctre.pheonix.motorcontrol.ControlMode.MotionMagic,position);
+        rightlift.set(com.ctre.phoenix.motorcontrol.ControlMode.MotionMagic,position);
         System.out.println("Executing setBMHeight, setting at "+ Robot.oi.getJoystick().getRawAxis(1));
     }
 

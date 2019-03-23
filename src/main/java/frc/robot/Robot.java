@@ -7,11 +7,12 @@
 
 package frc.robot;
 
+import edu.wpi.first.cameraserver.CameraServer;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard; 
 // import frc.robot.commands.ExampleCommand;
 import frc.robot.subsystems.*;
 import frc.robot.commands.*;
@@ -31,6 +32,7 @@ public class Robot extends TimedRobot {
   public static OI oi;
   public static BallLift ballLift = new BallLift();
   public static BallManipulator ballManipulator = new BallManipulator();
+  public static ExtendoHatch extendoHatch = new ExtendoHatch();
 
   Command m_autonomousCommand;
   SendableChooser<Command> m_chooser = new SendableChooser<>();
@@ -42,6 +44,7 @@ public class Robot extends TimedRobot {
   @Override
   public void robotInit() {
     oi = new OI(drivetrain);
+    CameraServer.getInstance().startAutomaticCapture();
     // m_chooser.addDefault("Default Auto", new ExampleCommand());
     // // chooser.addObject("My Auto", new MyAutoCommand());
     // SmartDashboard.putData("Auto mode", m_chooser);

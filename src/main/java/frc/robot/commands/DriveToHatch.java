@@ -53,7 +53,7 @@ public class DriveToHatch extends Command {
     //System.out.println(String.format("Limelight X: %f", limelightdata[0]));
 
     if (isTargetVisible(limelightdata)) {
-      double percentError = (limelightdata[0]-1)/25;
+      double percentError = (limelightdata[0]-5)/27;
       SmartDashboard.putNumber("PercentError", percentError);
 
       double offset = 1 - Math.abs(percentError)*FORWARD_SPEED;
@@ -61,14 +61,14 @@ public class DriveToHatch extends Command {
       double outsideSpeed = FORWARD_SPEED;
 
       SmartDashboard.putNumber("TurnOffset", insideSpeed);
-      if(percentError>=0){
+      if(percentError>=0){ 
         drive.tankDrive(-insideSpeed, -outsideSpeed);
-        SmartDashboard.putNumber("DriveLeft", insideSpeed);
-        SmartDashboard.putNumber("DriveRight", outsideSpeed);
-      }else{ 
-        drive.tankDrive(-outsideSpeed, -insideSpeed);
         SmartDashboard.putNumber("DriveLeft", outsideSpeed);
         SmartDashboard.putNumber("DriveRight", insideSpeed);
+      }else{
+        drive.tankDrive(-outsideSpeed, -insideSpeed);
+        SmartDashboard.putNumber("DriveLeft", insideSpeed);
+        SmartDashboard.putNumber("DriveRight", outsideSpeed);
       }
     } else {
       drive.tankDrive(0,0);

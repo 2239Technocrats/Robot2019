@@ -8,28 +8,33 @@ import frc.robot.Robot;
 
 public class SetBMSpeed extends Command{
 
-    private int position;
+    // private double speed;
 
-    public SetBMSpeed(double speed){
-        this.position = position;
+    public SetBMSpeed(/*double speed*/){
+        // this.speed = speed;
         requires(Robot.ballLift);
-        requires(Robot.drivetrain);
     }
 
-    @Override
-    protected void initialize(){
-
-    }
 
     @Override
     protected void execute() {
-        Robot.ballLift.left.set(Robot.oi.getJoystick().getRawAxis(1));
-        Robot.ballLift.right.set(-Robot.oi.getJoystick().getRawAxis(1));
-        System.out.println("Executing setBMHeight, setting at "+ Robot.oi.getJoystick().getRawAxis(1));
+        if(Robot.oi.getJoystick().getRawButton(3)){
+            
+            Robot.ballLift.left.set(-Robot.oi.getJoystick().getRawAxis(1));
+            Robot.ballLift.right.set(-Robot.oi.getJoystick().getRawAxis(1));
+            // Robot.ballLift.getLift().tankDrive(-Robot.oi.getJoystick().getRawAxis(1), Robot.oi.getJoystick().getRawAxis(1));
+        }else if(Robot.oi.getXboxController().getRawButton(3)){
+            Robot.ballLift.left.set(Robot.oi.getXboxController().getRawAxis(0));
+            Robot.ballLift.right.set(Robot.oi.getXboxController().getRawAxis(0));
+        }else{
+            Robot.ballLift.getLift().arcadeDrive(0, 0);
+        }
+        
+        System.out.println("Executing setBMSpeed, setting at "+ Robot.oi.getJoystick().getRawAxis(1));
     }
 
     @Override
     protected boolean isFinished(){
-        return false;
+        return true;
     }
 }

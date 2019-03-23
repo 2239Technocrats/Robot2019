@@ -74,8 +74,10 @@ public class OI {
     drive = drivetrain.getDrive();
     b1.whileHeld(new TurnToBall());
     b2.whileHeld(new DriveToHatch());
+    
     // b5.whenPressed(new HandiDandiCommand1());
-    b5.whenPressed(new ToggleHatchManipulator());
+    // b5.whenPressed(new ToggleHatchManipulator());
+    b5.whenPressed(new ToggleExtendoHatch());
     b6.whenPressed(new ToggleHatchManipulator());
     // b7.whenPressed(new ToggleDrivingMode());
     // b8.whenPressed(new ToggleDrivingMode());
@@ -85,12 +87,13 @@ public class OI {
     b9.whenPressed(new TimeDrive(.1, .8));
     b10.whenPressed(new TurnAround(1.0, .8));
 
-    j1.whileHeld(new BallWheels(1));
-    j2.whileHeld(new BallWheels(-1));
+    j5.whileHeld(new BallWheels(.75));
+    j6.whileHeld(new BallWheels(-.5));
 
-    j3.whenPressed(new setBMHeight(GROUND_POSITION));
-    j4.whenPressed(new setBMHeight(CARGO_POSITION));
-    j5.whenPressed(new setBMHeight(ROCKET_POSITION));
+    // j3.whileHeld(new SetBMSpeed(testJoystick.getRawAxis(1)));
+    // j3.whenPressed(new setBMHeight(GROUND_POSITION));
+    // j4.whenPressed(new setBMHeight(CARGO_POSITION));
+    // j5.whenPressed(new setBMHeight(ROCKET_POSITION));
 
     //j3.whileHeld(new SetBMSpeed(-.25));
     //j4.whenPressed(new SetBMSpeed(0));

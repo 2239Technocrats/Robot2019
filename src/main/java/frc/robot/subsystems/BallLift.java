@@ -9,8 +9,10 @@ import edu.wpi.first.wpilibj.command.PIDSubsystem;
 // Motor controller
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import com.ctre.phoenix.motorcontrol.SensorCollection;
+import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 
 import frc.robot.Robot;
+import frc.robot.commands.SetBMSpeed;
 // Commands
 import frc.robot.commands.setBMHeight;
 
@@ -19,22 +21,26 @@ public class BallLift extends Subsystem{
 
     int position;
 
+    public DifferentialDrive LIFT_NowInArcadeDrive;
     public WPI_TalonSRX left;
     public WPI_TalonSRX right;
     public SpeedControllerGroup lift;
 
     public BallLift(){
         //right.set(com.ctre.phoenix.motorcontrol.ControlMode.Follower,5);
-
+        
         left = new WPI_TalonSRX(5);
         right = new WPI_TalonSRX(6);
         left.setExpiration(0.5);
         right.setExpiration(0.5);
         lift = new SpeedControllerGroup(left, right);
+        
+        LIFT_NowInArcadeDrive = new DifferentialDrive(left, right);
     }
 
     public void initDefaultCommand(){
-        //setDefaultCommand(new setBMHeight(0));
+        //setDefaultCommand(new SetBMSpeed(0));
+        setDefaultCommand(new SetBMSpeed());
     }
 
 
@@ -59,4 +65,7 @@ public class BallLift extends Subsystem{
          new setBMHeight(position);
     }
 
+    public DifferentialDrive getLift(){
+        return LIFT_NowInArcadeDrive;
+    }
 }
