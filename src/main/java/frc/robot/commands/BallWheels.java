@@ -1,6 +1,7 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.Robot;
 import frc.robot.subsystems.BallManipulator;
 
@@ -20,8 +21,9 @@ public class BallWheels extends Command{
             Robot.ballManipulator.setSpeed(-Robot.oi.getXboxController().getRawAxis(3));
         }else{
         Robot.ballManipulator.setSpeed(speed);
-        System.out.println("BallWheels are being set to:" + speed);
+        SmartDashboard.putNumber("BallWheels are being set to:", speed);
         }
+
     }
 
     @Override

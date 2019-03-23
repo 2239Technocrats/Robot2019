@@ -29,7 +29,7 @@ public class setBMHeight extends Command{
     @Override
     protected void execute() {
         rightlift.set(com.ctre.phoenix.motorcontrol.ControlMode.MotionMagic,position);
-        System.out.println("Executing setBMHeight, setting at "+ Robot.oi.getJoystick().getRawAxis(1));
+        SmartDashboard.putNumber("Executing setBMHeight, setting at ", Robot.oi.getJoystick().getRawAxis(1));
     }
 
     @Override

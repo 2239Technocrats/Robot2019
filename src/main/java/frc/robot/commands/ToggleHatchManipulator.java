@@ -3,6 +3,7 @@ package frc.robot.commands;
 import frc.robot.subsystems.Drivetrain;
 import frc.robot.target.*;
 import edu.wpi.first.wpilibj.command.*;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.Robot;
 
 public class ToggleHatchManipulator extends Command
@@ -23,7 +24,7 @@ public class ToggleHatchManipulator extends Command
     public void execute(){
         boolean state = Robot.hatchManipulator.getState();
         Robot.hatchManipulator.setState(!state);
-        System.out.println("execute on ToggleHatchManipulator, state: " + Robot.hatchManipulator.getState());
+        SmartDashboard.putBoolean("execute on ToggleHatchManipulator, state: ", Robot.hatchManipulator.getState());
     }
 
     @Override
