@@ -3,6 +3,7 @@ package frc.robot.commands;
 import frc.robot.subsystems.Drivetrain;
 import frc.robot.target.*;
 import edu.wpi.first.wpilibj.command.*;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.Robot;
 
 public class ToggleExtendoHatch extends Command
@@ -23,7 +24,7 @@ public class ToggleExtendoHatch extends Command
     public void execute(){
         boolean state = Robot.extendoHatch.getState();
         Robot.extendoHatch.setState(!state);
-        System.out.println("execute on ToggleExtendoHatch, state: " + Robot.extendoHatch.getState());
+        SmartDashboard.putBoolean("execute on ToggleExtendoHatch, state: ", Robot.extendoHatch.getState());
     }
 
     @Override

@@ -30,7 +30,7 @@ public class SetBMSpeed extends Command{
             Robot.ballLift.getLift().arcadeDrive(0, 0);
         }
         
-        System.out.println("Executing setBMSpeed, setting at "+ Robot.oi.getJoystick().getRawAxis(1));
+        SmartDashboard.putNumber("Executing setBMHeight, setting at ", Robot.oi.getJoystick().getRawAxis(1));
     }
 
     @Override

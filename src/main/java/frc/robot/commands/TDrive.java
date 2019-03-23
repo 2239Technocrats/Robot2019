@@ -5,6 +5,7 @@ import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 import frc.robot.OI;
 import edu.wpi.first.wpilibj.drive.*;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.GenericHID.Hand;
@@ -41,9 +42,14 @@ public class TDrive extends Command {
     // System.out.println("execute(); on tankdrive");
     if(Robot.drivetrain.flipped){
       drive.tankDrive(-1*controller.getRawAxis(1)*speed, -1*controller.getRawAxis(5)*speed, false);
+      
+      SmartDashboard.putNumber("TDrive, left", -1*controller.getRawAxis(1)*speed);
+      SmartDashboard.putNumber("TDrive, right", -1*controller.getRawAxis(5)*speed);
     }
     else{
       drive.tankDrive(controller.getRawAxis(5)*speed, controller.getRawAxis(1)*speed, false);  
+      SmartDashboard.putNumber("TDrive, left", controller.getRawAxis(5)*speed);
+      SmartDashboard.putNumber("TDrive, right", controller.getRawAxis(1)*speed);
     }
     
   }
