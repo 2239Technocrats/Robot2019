@@ -6,29 +6,21 @@ import edu.wpi.first.wpilibj.Timer;
 
 public class TurnAround extends Command{
 
-    private boolean finished;
-    private double time;
-    private double speed;
-    Timer timer = new Timer();
+    private double speed = Robot.drivetrain.speed;
 
-    public TurnAround(double time, double speed){
-        this.time = time;
-        this.speed = speed;
-        timer.start();
+    public TurnAround(){
+        requires(Robot.drivetrain);
     }
 
     @Override
     protected void execute(){
-        Robot.drivetrain.drive((float)speed, (float)-speed);
+        Robot.drivetrain.left.set(speed);
+        Robot.drivetrain.right.set(speed);
     }
 
     @Override
     protected boolean isFinished(){
-        if(timer.get()<time){
-            return false;
-        }else{
-            return true;
-        }
+        return false;
     }
 
 }

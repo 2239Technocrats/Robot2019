@@ -45,6 +45,7 @@ public class Robot extends TimedRobot {
   public void robotInit() {
     oi = new OI(drivetrain);
     CameraServer.getInstance().startAutomaticCapture();
+    limelight.getNetworkTable().getEntry("pipeline").setNumber(1);
     // m_chooser.addDefault("Default Auto", new ExampleCommand());
     // // chooser.addObject("My Auto", new MyAutoCommand());
     // SmartDashboard.putData("Auto mode", m_chooser);
@@ -70,7 +71,7 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void disabledInit() {
-    new setBMHeight(0);
+    new LimelightDefault();
   }
 
   @Override

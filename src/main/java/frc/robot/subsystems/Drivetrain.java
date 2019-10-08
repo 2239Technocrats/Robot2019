@@ -33,24 +33,25 @@ public class Drivetrain extends Subsystem {
   public int controller = 0;
   public boolean flipped = true;
   public WPI_TalonSRX leftMotorM;
-  // public WPI_VictorSPX leftMotorS;
-  public WPI_TalonSRX leftMotorS;
+  public WPI_VictorSPX leftMotorS;
+  // public WPI_TalonSRX leftMotorS;
   public WPI_TalonSRX rightMotorM;
-  // public WPI_VictorSPX rightMotorS;
-  public WPI_TalonSRX rightMotorS;
+  public WPI_VictorSPX rightMotorS;
+  // public WPI_TalonSRX rightMotorS;
   public DifferentialDrive drive;
   public SpeedControllerGroup left;
   public SpeedControllerGroup right;
+  
 
 
   // Drivetrain public objects
   public Drivetrain () {
     leftMotorM = new WPI_TalonSRX(1);
-    // leftMotorS = new WPI_VictorSPX(2);
-    leftMotorS = new WPI_TalonSRX(2);
+    leftMotorS = new WPI_VictorSPX(2);
+    // leftMotorS = new WPI_TalonSRX(2);
     rightMotorM = new WPI_TalonSRX(3);
-    // rightMotorS = new WPI_VictorSPX(4);
-    rightMotorS = new WPI_TalonSRX(4);
+    rightMotorS = new WPI_VictorSPX(4);
+    // rightMotorS = new WPI_TalonSRX(4);
 
     leftMotorM.setExpiration(0.5);
     leftMotorS.setExpiration(0.5);
@@ -58,9 +59,6 @@ public class Drivetrain extends Subsystem {
     rightMotorS.setExpiration(0.5);
     left = new SpeedControllerGroup(leftMotorM, leftMotorS);
     right = new SpeedControllerGroup(rightMotorM, rightMotorS);
-    left = new SpeedControllerGroup(leftMotorM, leftMotorS);
-
-
 
 
     drive = new DifferentialDrive(right, left);
@@ -78,7 +76,7 @@ public class Drivetrain extends Subsystem {
     setDefaultCommand(new TDrive());
   }
 
-  public void drive(float left, float right) {
+  public void drive(double left, double right) {
     System.out.println(String.format("Left: %d\tRight: %d", left, right));
   }
 

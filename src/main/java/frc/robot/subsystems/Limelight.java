@@ -3,6 +3,7 @@ package frc.robot.subsystems;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import java.lang.Math;
 
+import frc.robot.commands.*;
 import edu.wpi.first.networktables.NetworkTableEntry;
 import edu.wpi.first.networktables.NetworkTableInstance;
 import edu.wpi.first.networktables.*;
@@ -51,5 +52,10 @@ public class Limelight extends Subsystem {
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new DriveToHatch());
+        setDefaultCommand(new LimelightDefault());
+    }
+
+    public NetworkTable getNetworkTable(){
+        return table;
     }
 }

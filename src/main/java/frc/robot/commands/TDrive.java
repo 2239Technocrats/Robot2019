@@ -14,11 +14,11 @@ import edu.wpi.first.wpilibj.GenericHID.Hand;
  * An example command.  You can replace me with your own command.
  */
 public class TDrive extends Command {
-    DifferentialDrive drive;
-    XboxController controller;
-    Joystick joystick;
-    boolean flipped;
-    public double speed = Robot.drivetrain.speed;
+  DifferentialDrive drive;
+  XboxController controller;
+  Joystick joystick;
+  boolean flipped;
+  public double speed = Robot.drivetrain.speed;
   public TDrive() {
     // Use requires() here to declare subsystem dependencies
     requires(Robot.drivetrain);
@@ -27,10 +27,10 @@ public class TDrive extends Command {
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-      drive = Robot.drivetrain.getDrive();
-      controller = Robot.oi.getXboxController();
-      joystick = Robot.oi.getJoystick();
-      //flipped = Robot.drivetrain.isFlipped();
+    drive = Robot.drivetrain.getDrive();
+    controller = Robot.oi.getXboxController();
+    // joystick = Robot.oi.getJoystick();
+    //flipped = Robot.drivetrain.isFlipped();
   }
 
   // Called repeatedly when this Command is scheduled to run

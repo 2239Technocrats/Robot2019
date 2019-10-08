@@ -18,19 +18,19 @@ public class SetBMSpeed extends Command{
 
     @Override
     protected void execute() {
-        if(Robot.oi.getJoystick().getRawButton(3)){
+        // if(Robot.oi.getJoystick().getRawButton(3)){
             
-            Robot.ballLift.left.set(-Robot.oi.getJoystick().getRawAxis(1));
-            Robot.ballLift.right.set(-Robot.oi.getJoystick().getRawAxis(1));
-            // Robot.ballLift.getLift().tankDrive(-Robot.oi.getJoystick().getRawAxis(1), Robot.oi.getJoystick().getRawAxis(1));
-        }else if(Robot.oi.getXboxController().getRawButton(3)){
-            Robot.ballLift.left.set(Robot.oi.getXboxController().getRawAxis(0));
-            Robot.ballLift.right.set(Robot.oi.getXboxController().getRawAxis(0));
-        }else{
-            Robot.ballLift.getLift().arcadeDrive(0, 0);
-        }
+        //     Robot.ballLift.left.set(-Robot.oi.getJoystick().getRawAxis(1));
+        //     Robot.ballLift.right.set(-Robot.oi.getJoystick().getRawAxis(1));
+        //     // Robot.ballLift.getLift().tankDrive(-Robot.oi.getJoystick().getRawAxis(1), Robot.oi.getJoystick().getRawAxis(1));
+        // }else if(Robot.oi.getXboxController().getRawButton(3)){
+        //     Robot.ballLift.left.set(Robot.oi.getXboxController().getRawAxis(0));
+        //     Robot.ballLift.right.set(Robot.oi.getXboxController().getRawAxis(0));
+        // }else{
+            // Robot.ballLift.getLift().arcadeDrive(0, 0);
+        // }
         
-        SmartDashboard.putNumber("Executing setBMHeight, setting at ", Robot.oi.getJoystick().getRawAxis(1));
+        // SmartDashboard.putNumber("Executing setBMHeight, setting at ", Robot.oi.getJoystick().getRawAxis(1));
     }
 
     @Override

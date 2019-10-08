@@ -38,18 +38,18 @@ public class OI {
   JoystickButton b8 = new JoystickButton(controller, 8);
   JoystickButton b9 = new JoystickButton(controller, 9);
   JoystickButton b10 = new JoystickButton(controller, 10);
-  JoystickButton j1 = new JoystickButton(testJoystick, 1);
-  JoystickButton j2 = new JoystickButton(testJoystick, 2);
-  JoystickButton j3 = new JoystickButton(testJoystick, 3);
-  JoystickButton j4 = new JoystickButton(testJoystick, 4);
-  JoystickButton j5 = new JoystickButton(testJoystick, 5);
-  JoystickButton j6 = new JoystickButton(testJoystick, 6);
-  JoystickButton j7 = new JoystickButton(testJoystick, 7);
-  JoystickButton j8 = new JoystickButton(testJoystick, 8);
-  JoystickButton j9 = new JoystickButton(testJoystick, 9);
-  JoystickButton j10 = new JoystickButton(testJoystick, 10);
-  JoystickButton j11 = new JoystickButton(testJoystick, 11);
-  JoystickButton j12 = new JoystickButton(testJoystick, 12);
+  // JoystickButton j1 = new JoystickButton(testJoystick, 1);
+  // JoystickButton j2 = new JoystickButton(testJoystick, 2);
+  // JoystickButton j3 = new JoystickButton(testJoystick, 3);
+  // JoystickButton j4 = new JoystickButton(testJoystick, 4);
+  // JoystickButton j5 = new JoystickButton(testJoystick, 5);
+  // JoystickButton j6 = new JoystickButton(testJoystick, 6);
+  // JoystickButton j7 = new JoystickButton(testJoystick, 7);
+  // JoystickButton j8 = new JoystickButton(testJoystick, 8);
+  // JoystickButton j9 = new JoystickButton(testJoystick, 9);
+  // JoystickButton j10 = new JoystickButton(testJoystick, 10);
+  // JoystickButton j11 = new JoystickButton(testJoystick, 11);
+  // JoystickButton j12 = new JoystickButton(testJoystick, 12);
   POVButton up = new POVButton(controller, 0);
   POVButton upLeft = new POVButton(controller, 45);
   POVButton left = new POVButton(controller, 90);
@@ -60,21 +60,22 @@ public class OI {
   POVButton upRight = new POVButton(controller, 315);
 
   POVButton up2 = new POVButton(testJoystick, 0);
-  POVButton uL2 = new POVButton(testJoystick, 45);
+  // POVButton uL2 = new POVButton(testJoystick, 45);
   POVButton left2 = new POVButton(testJoystick, 90);
-  POVButton dL2 = new POVButton(testJoystick, 135);
+  // POVButton dL2 = new POVButton(testJoystick, 135);
   POVButton down2 = new POVButton(testJoystick, 180);
-  POVButton dR2 = new POVButton(testJoystick, 225);
+  // POVButton dR2 = new POVButton(testJoystick, 225);
   POVButton right2 = new POVButton(testJoystick, 270);
-  POVButton uR2 = new POVButton(testJoystick, 315);
+  // POVButton uR2 = new POVButton(testJoystick, 315);
 
   DifferentialDrive drive;
   public int speed;
   public OI (Drivetrain drivetrain) {
     drive = drivetrain.getDrive();
-    b1.whileHeld(new TurnToBall());
+    b1.whenPressed(new SetBMPosition(4096));
     b2.whileHeld(new DriveToHatch());
-    
+    b3.whileHeld(new SetBMPosition(4096));
+    b4.whileHeld(new VisionVision());
     // b5.whenPressed(new HandiDandiCommand1());
     // b5.whenPressed(new ToggleHatchManipulator());
     b5.whenPressed(new ToggleExtendoHatch());
@@ -84,11 +85,13 @@ public class OI {
     b7.whenPressed(new FlipDrive());
     b8.whenPressed(new FlipDrive());
 
-    b9.whenPressed(new TimeDrive(.1, .8));
-    b10.whenPressed(new TurnAround(1.0, .8));
+    // b9.whenPressed(new TimeDrive(.1, .8));
+    // b10.whenPressed(new TurnAround(1.0, .8));
 
-    j5.whileHeld(new BallWheels(.75));
-    j6.whileHeld(new BallWheels(-.5));
+    // j5.whileHeld(new BallWheels(.75));
+    // j6.whileHeld(new BallWheels(-.5));
+    // j5.whenPressed(new ToggleHatchManipulator());
+    // j6.whenPressed(new ToggleExtendoHatch());
 
     // j3.whileHeld(new SetBMSpeed(testJoystick.getRawAxis(1)));
     // j3.whenPressed(new setBMHeight(GROUND_POSITION));
@@ -105,15 +108,20 @@ public class OI {
     down.whenPressed(new SetDriveSpeed(.5));
     right.whenPressed(new SetDriveSpeed(.25));
 
+    up2.whenPressed(new SetDriveSpeed(1.0));
+    left2.whenPressed(new SetDriveSpeed(.75));
+    down2.whenPressed(new SetDriveSpeed(.5));
+    right2.whenPressed(new SetDriveSpeed(.25));
+
   }
 
   public XboxController getXboxController(){
     return controller;
   }
 
-  public Joystick getJoystick(){
-    return testJoystick;
-  }
+  // public Joystick getJoystick(){
+  //   return testJoystick;
+  // }
 
   public int getSpeed(){
     return speed;

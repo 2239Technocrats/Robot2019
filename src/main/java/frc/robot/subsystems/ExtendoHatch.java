@@ -10,7 +10,7 @@ public class ExtendoHatch extends Subsystem {
 
     Solenoid solenoid;
     public ExtendoHatch(){
-        solenoid = new Solenoid(0);
+        solenoid = new Solenoid(1);
     }
  
     public void initDefaultCommand(){
