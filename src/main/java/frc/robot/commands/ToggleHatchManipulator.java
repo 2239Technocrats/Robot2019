@@ -5,7 +5,7 @@ import frc.robot.target.*;
 import edu.wpi.first.wpilibj.command.*;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.Robot;
-
+//Opens and closes the hatch
 public class ToggleHatchManipulator extends Command
 {
     public final int FINISHED_WIDTH = 230;

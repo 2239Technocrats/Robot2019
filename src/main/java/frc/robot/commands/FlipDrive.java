@@ -3,8 +3,10 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj.command.Command;
 
 import frc.robot.Robot;
-
-public class FlipDrive extends Command{
+/**
+ * FlipDrive flips the direction of the controls
+ */
+ public class FlipDrive extends Command{
 
     private boolean flipped;
 

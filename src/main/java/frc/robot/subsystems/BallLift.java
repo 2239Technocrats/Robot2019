@@ -19,13 +19,14 @@ import com.ctre.phoenix.motorcontrol.StatusFrameEnhanced;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 
 import frc.robot.Robot;
+import frc.robot.commands.SetBMSpeed;
 import frc.robot.commands.SetBMPosition;
 
 
 public class BallLift extends Subsystem{
 
     int position;
-
+    
     public DifferentialDrive LIFT_NowInArcadeDrive;
     public WPI_TalonSRX left;
     public WPI_TalonSRX right;
@@ -38,8 +39,8 @@ public class BallLift extends Subsystem{
     public final double kD = 0;
     public final double kF = 0;
 
-    public final double cruiseVelocity = 15000;
-    public final double acceleration = 6000;
+    public final int cruiseVelocity = 100;
+    public final int acceleration = 100;
     public final double percentDeadband = .001;
 
     public final int tickrate = 4096;
@@ -54,24 +55,26 @@ public class BallLift extends Subsystem{
         left.setExpiration(0.5);
         right.setExpiration(0.5);
         lift = new SpeedControllerGroup(left, right);
-        right.configFactoryDefault();
-        right.follow(left);
-        left.configFactoryDefault();
-        left.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, 0, timeoutMs);
-        left.setStatusFramePeriod(StatusFrameEnhanced.Status_13_Base_PIDF0, 10, timeoutMs);
-        left.setStatusFramePeriod(StatusFrameEnhanced.Status_10_MotionMagic, 10, timeoutMs);
-        left.configNeutralDeadband(percentDeadband, timeoutMs);
-        left.selectProfileSlot(0, 0);
-        left.config_kP(0, kP, timeoutMs);
-        left.config_kI(0, kI, timeoutMs);
-        left.config_kD(0, kD, timeoutMs);
-        left.config_kI(0, kF, timeoutMs);
-        left.setSelectedSensorPosition(0, 0, timeoutMs);
+        // right.configFactoryDefault();
+        // right.follow(left);
+        // left.configFactoryDefault();
+        // left.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, 0, timeoutMs);
+        // left.setStatusFramePeriod(StatusFrameEnhanced.Status_13_Base_PIDF0, 10, timeoutMs);
+        // left.setStatusFramePeriod(StatusFrameEnhanced.Status_10_MotionMagic, 10, timeoutMs);
+        // left.configNeutralDeadband(percentDeadband, timeoutMs);
+        // left.selectProfileSlot(0, 0);
+        // left.config_kP(0, kP, timeoutMs);
+        // left.config_kI(0, kI, timeoutMs);
+        // left.config_kD(0, kD, timeoutMs);
+        // left.config_kI(0, kF, timeoutMs);
+        // left.setSelectedSensorPosition(0, 0, timeoutMs);
+        // left.configMotionCruiseVelocity(cruiseVelocity, timeoutMs);
+        // left.configMotionAcceleration(acceleration, timeoutMs);
 
     }
 
     public void initDefaultCommand(){
-        //setDefaultCommand(new SetBMPosition(0));
+        setDefaultCommand(new SetBMSpeed());
     }
 
 

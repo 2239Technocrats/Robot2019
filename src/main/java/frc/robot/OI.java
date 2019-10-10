@@ -72,9 +72,9 @@ public class OI {
   public int speed;
   public OI (Drivetrain drivetrain) {
     drive = drivetrain.getDrive();
-    b1.whenPressed(new SetBMPosition(4096));
+    // b1.whenPressed(new SetBMPosition(4096));
     b2.whileHeld(new DriveToHatch());
-    b3.whileHeld(new SetBMPosition(4096));
+    // b3.whileHeld(new SetBMPosition(4096));
     b4.whileHeld(new VisionVision());
     // b5.whenPressed(new HandiDandiCommand1());
     // b5.whenPressed(new ToggleHatchManipulator());
@@ -82,6 +82,8 @@ public class OI {
     b6.whenPressed(new ToggleHatchManipulator());
     // b7.whenPressed(new ToggleDrivingMode());
     // b8.whenPressed(new ToggleDrivingMode());
+
+    // Flips the direction of the robot 
     b7.whenPressed(new FlipDrive());
     b8.whenPressed(new FlipDrive());
 
@@ -114,7 +116,7 @@ public class OI {
     right2.whenPressed(new SetDriveSpeed(.25));
 
   }
-
+  //return controller
   public XboxController getXboxController(){
     return controller;
   }

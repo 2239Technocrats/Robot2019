@@ -5,11 +5,9 @@ import frc.robot.target.*;
 import edu.wpi.first.wpilibj.command.*;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.Robot;
-
+//Extends and retracts the hatch
 public class ToggleExtendoHatch extends Command
 {
-    public final int FINISHED_WIDTH = 230;
-    public final int OFFSET_TOLERANCE = 5;
 
     public ToggleExtendoHatch(){
         requires(Robot.extendoHatch);

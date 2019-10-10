@@ -14,14 +14,12 @@ import java.util.Arrays;
  * An example command.  You can replace me with your own command.
  */
 public class DriveToHatch extends Command {
-    /**
-     *
-     */
+  
 
-    public double FORWARD_SPEED = -0.7;
-    public static final double TURN_SPEED = 0.01;
-    DifferentialDrive drive;
-    XboxController testXbox;
+  public double FORWARD_SPEED = -0.7;
+  public static final double TURN_SPEED = 0.01;
+  DifferentialDrive drive;
+  XboxController testXbox;
   public DriveToHatch() {
     // Use requires() here to declare subsystem dependencies
     requires(Robot.limelight);

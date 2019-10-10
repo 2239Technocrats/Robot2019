@@ -29,7 +29,7 @@ public class TDrive extends Command {
   protected void initialize() {
     drive = Robot.drivetrain.getDrive();
     controller = Robot.oi.getXboxController();
-    // joystick = Robot.oi.getJoystick();
+    //joystick = Robot.oi.getJoystick();
     //flipped = Robot.drivetrain.isFlipped();
   }
 
@@ -40,7 +40,7 @@ public class TDrive extends Command {
     speed = Robot.drivetrain.speed;
     // System.out.println(Robot.drivetrain.flipped);
     // System.out.println("execute(); on tankdrive");
-    if(Robot.drivetrain.flipped){
+    if(!Robot.drivetrain.flipped){
       drive.tankDrive(-1*controller.getRawAxis(1)*speed, -1*controller.getRawAxis(5)*speed, false);
       
       SmartDashboard.putNumber("TDrive, left", -1*controller.getRawAxis(1)*speed);

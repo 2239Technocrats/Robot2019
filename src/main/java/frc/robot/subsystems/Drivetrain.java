@@ -32,20 +32,25 @@ public class Drivetrain extends Subsystem {
   public double speed = .75;
   public int controller = 0;
   public boolean flipped = true;
+
+// Defines the motors
   public WPI_TalonSRX leftMotorM;
   public WPI_VictorSPX leftMotorS;
   // public WPI_TalonSRX leftMotorS;
   public WPI_TalonSRX rightMotorM;
   public WPI_VictorSPX rightMotorS;
   // public WPI_TalonSRX rightMotorS;
+
+
   public DifferentialDrive drive;
   public SpeedControllerGroup left;
   public SpeedControllerGroup right;
-  
+
 
 
   // Drivetrain public objects
   public Drivetrain () {
+    // Intializes the motors 
     leftMotorM = new WPI_TalonSRX(1);
     leftMotorS = new WPI_VictorSPX(2);
     // leftMotorS = new WPI_TalonSRX(2);
@@ -57,15 +62,18 @@ public class Drivetrain extends Subsystem {
     leftMotorS.setExpiration(0.5);
     rightMotorM.setExpiration(0.5);
     rightMotorS.setExpiration(0.5);
+
+    //  Sets the parameter for the robot's speed. 
     left = new SpeedControllerGroup(leftMotorM, leftMotorS);
     right = new SpeedControllerGroup(rightMotorM, rightMotorS);
 
-
+    // Intializes the tank drive
     drive = new DifferentialDrive(right, left);
 
     
   }
 
+  // Returns the tank drive
   public DifferentialDrive getDrive() {
       return drive;
   }

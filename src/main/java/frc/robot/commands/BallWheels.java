@@ -15,10 +15,12 @@ public class BallWheels extends Command{
     }
 
     protected void execute(){
-        if(Robot.oi.getXboxController().getRawAxis(2) > 0){
+        if(Robot.oi.getXboxController().getRawAxis(2) > 0  && !Robot.oi.getXboxController().getRawButton(3)){
             Robot.ballManipulator.setSpeed(Robot.oi.getXboxController().getRawAxis(2));
-        }else if(Robot.oi.getXboxController().getRawAxis(3) > 0){
+        }else if(Robot.oi.getXboxController().getRawAxis(3) > 0  && !Robot.oi.getXboxController().getRawButton(3)){
             Robot.ballManipulator.setSpeed(-Robot.oi.getXboxController().getRawAxis(3));
+        }else if(Robot.oi.getXboxController().getRawButton(3)  && Robot.oi.getXboxController().getRawAxis(3) > 0){
+            Robot.ballManipulator.setSpeed(-.5*Robot.oi.getXboxController().getRawAxis(3));
         }else{
         Robot.ballManipulator.setSpeed(speed);
         SmartDashboard.putNumber("BallWheels are being set to:", speed);

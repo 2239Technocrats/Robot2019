@@ -8,29 +8,35 @@ import frc.robot.Robot;
 
 public class SetBMSpeed extends Command{
 
-    // private double speed;
 
-    public SetBMSpeed(/*double speed*/){
-        // this.speed = speed;
+    public SetBMSpeed(){
         requires(Robot.ballLift);
     }
 
 
     @Override
     protected void execute() {
-        // if(Robot.oi.getJoystick().getRawButton(3)){
+        if(Robot.oi.getXboxController().getRawButton(3) && Robot.oi.getXboxController().getRawAxis(2) > 0){
             
-        //     Robot.ballLift.left.set(-Robot.oi.getJoystick().getRawAxis(1));
-        //     Robot.ballLift.right.set(-Robot.oi.getJoystick().getRawAxis(1));
-        //     // Robot.ballLift.getLift().tankDrive(-Robot.oi.getJoystick().getRawAxis(1), Robot.oi.getJoystick().getRawAxis(1));
-        // }else if(Robot.oi.getXboxController().getRawButton(3)){
-        //     Robot.ballLift.left.set(Robot.oi.getXboxController().getRawAxis(0));
-        //     Robot.ballLift.right.set(Robot.oi.getXboxController().getRawAxis(0));
-        // }else{
-            // Robot.ballLift.getLift().arcadeDrive(0, 0);
-        // }
+            Robot.ballLift.left.set(-.5*Robot.oi.getXboxController().getRawAxis(2));
+            System.out.println("Setting Left to "+(-.5*Robot.oi.getXboxController().getRawAxis(2)));
+            Robot.ballLift.right.set(.5*Robot.oi.getXboxController().getRawAxis(2));
+            System.out.println("Setting Right to "+(.5*Robot.oi.getXboxController().getRawAxis(2)));
+            Robot.ballManipulator.setSpeed(.25);
+        }
+        else if(Robot.oi.getXboxController().getRawButton(3) && Robot.oi.getXboxController().getRawAxis(3) > 0){
+            
+            Robot.ballLift.left.set(.5*Robot.oi.getXboxController().getRawAxis(3));
+            System.out.println("Setting Left to "+(-.5*Robot.oi.getXboxController().getRawAxis(3)));
+            Robot.ballLift.right.set(-.5*Robot.oi.getXboxController().getRawAxis(3));
+            System.out.println("Setting Right to "+(.5*Robot.oi.getXboxController().getRawAxis(3)));
+        }
+
+        else{
+            Robot.ballLift.left.set(0);
+            Robot.ballLift.right.set(0);
+        }
         
-        // SmartDashboard.putNumber("Executing setBMHeight, setting at ", Robot.oi.getJoystick().getRawAxis(1));
     }
 
     @Override
